@@ -127,6 +127,7 @@ public class ScoreDeMatch {
 	private int train6CageHpasBut;
 	private int train6CageIBut;
 	private int train6CageIpasBut;
+	private String zoneDeTire;
 	public int getId() {
 		return id;
 	}
@@ -792,6 +793,12 @@ public class ScoreDeMatch {
 	}
 	public void setTrain6CageIpasBut(int train6CageIpasBut) {
 		this.train6CageIpasBut = train6CageIpasBut;
+	}
+	public String getZoneDeTire() {
+		return zoneDeTire;
+	}
+	public void setZoneDeTire(String zoneDeTire) {
+		this.zoneDeTire = zoneDeTire;
 	}
 	
 	
