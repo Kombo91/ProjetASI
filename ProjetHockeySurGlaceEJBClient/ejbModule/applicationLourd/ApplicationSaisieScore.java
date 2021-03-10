@@ -14,6 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JEditorPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 /**
  * @author KP
@@ -41,6 +47,12 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	
 	String zoneTrain = "";
 	String zoneCage = "";
+	String tire ="";
+	private JButton PasBut;
+	private JButton But;
+	private JButton finDeMatch;
+	private JTextField txtZoneDeTire;
+	private JTextField textField;
 	
 
 	/**
@@ -64,7 +76,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	 */
 	public ApplicationSaisieScore() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 480, 300);
+		setBounds(100, 100, 507, 357);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -74,7 +86,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		/////// JPanel terain
 		train1 = new JPanel();
 		train1.setBackground(Color.PINK);
-		train1.setBounds(10, 11, 50, 50);
+		train1.setBounds(10, 45, 50, 50);
 		train1.addMouseListener(this);
 		JLabel texteTrain1 = new JLabel("1");
 		texteTrain1.setFont(new Font("Verdana",1,20));
@@ -83,7 +95,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		train2 = new JPanel();
 		train2.setBackground(Color.PINK);
-		train2.setBounds(70, 11, 50, 50);
+		train2.setBounds(70, 45, 50, 50);
 		train2.addMouseListener(this);
 		JLabel texteTrain2 = new JLabel("2");
 		texteTrain2.setFont(new Font("Verdana",1,20));
@@ -92,7 +104,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		train3 = new JPanel();
 		train3.setBackground(Color.PINK);
-		train3.setBounds(10, 72, 50, 50);
+		train3.setBounds(10, 106, 50, 50);
 		train3.addMouseListener(this);
 		JLabel texteTrain3 = new JLabel("3");
 		texteTrain3.setFont(new Font("Verdana",1,20));
@@ -101,7 +113,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		train4 = new JPanel();
 		train4.setBackground(Color.PINK);
-		train4.setBounds(70, 72, 50, 50);
+		train4.setBounds(70, 106, 50, 50);
 		train4.addMouseListener(this);
 		JLabel texteTrain4 = new JLabel("4");
 		texteTrain4.setFont(new Font("Verdana",1,20));
@@ -110,7 +122,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		train5 = new JPanel();
 		train5.setBackground(Color.PINK);
-		train5.setBounds(10, 133, 50, 50);
+		train5.setBounds(10, 167, 50, 50);
 		train5.addMouseListener(this);
 		JLabel texteTrain5 = new JLabel("5");
 		texteTrain5.setFont(new Font("Verdana",1,20));
@@ -119,7 +131,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 	    train6 = new JPanel();
 	    train6.setBackground(Color.PINK);
-	    train6.setBounds(70, 133, 50, 50);
+	    train6.setBounds(70, 167, 50, 50);
 		train6.addMouseListener(this);
 		JLabel texteTrain6 = new JLabel("6");
 		texteTrain6.setFont(new Font("Verdana",1,20));
@@ -130,7 +142,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageA = new JPanel();
 		cageA.setBackground(Color.PINK);
-		cageA.setBounds(179, 11, 50, 50);
+		cageA.setBounds(170, 45, 50, 50);
 		cageA.addMouseListener(this);
 		JLabel texteCageA = new JLabel("A");
 		texteCageA.setFont(new Font("Verdana",1,20));
@@ -139,7 +151,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageB = new JPanel();
 		cageB.setBackground(Color.PINK);
-		cageB.setBounds(239, 11, 50, 50);
+		cageB.setBounds(230, 45, 50, 50);
 		cageB.addMouseListener(this);
 		JLabel texteCageB= new JLabel("B");
 		texteCageB.setFont(new Font("Verdana",1,20));
@@ -148,7 +160,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageC = new JPanel();
 		cageC.setBackground(Color.PINK);
-		cageC.setBounds(299, 11, 50, 50);
+		cageC.setBounds(290, 45, 50, 50);
 		cageC.addMouseListener(this);
 		JLabel texteCageC = new JLabel("C");
 		texteCageC.setFont(new Font("Verdana",1,20));
@@ -157,7 +169,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageD = new JPanel();
 		cageD.setBackground(Color.PINK);
-		cageD.setBounds(179, 72, 50, 50);
+		cageD.setBounds(170, 106, 50, 50);
 		cageD.addMouseListener(this);
 		JLabel texteCageD = new JLabel("D");
 		texteCageD.setFont(new Font("Verdana",1,20));
@@ -166,7 +178,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageE = new JPanel();
 		cageE.setBackground(Color.PINK);
-		cageE.setBounds(239, 72, 50, 50);
+		cageE.setBounds(230, 106, 50, 50);
 		cageE.addMouseListener(this);
 		JLabel texteCageE = new JLabel("E");
 		texteCageE.setFont(new Font("Verdana",1,20));
@@ -175,7 +187,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageF = new JPanel();
 		cageF.setBackground(Color.PINK);
-		cageF.setBounds(299, 72, 50, 50);
+		cageF.setBounds(290, 106, 50, 50);
 		cageF.addMouseListener(this);
 		JLabel texteCageF = new JLabel("F");
 		texteCageF.setFont(new Font("Verdana",1,20));
@@ -184,7 +196,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageG = new JPanel();
 		cageG.setBackground(Color.PINK);
-		cageG.setBounds(179, 133, 50, 50);
+		cageG.setBounds(170, 167, 50, 50);
 		cageG.addMouseListener(this);
 		JLabel texteCageG = new JLabel("G");
 		texteCageG.setFont(new Font("Verdana",1,20));
@@ -193,7 +205,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageH = new JPanel();
 		cageH.setBackground(Color.PINK);
-		cageH.setBounds(239, 133, 50, 50);
+		cageH.setBounds(230, 167, 50, 50);
 		cageH.addMouseListener(this);
 		JLabel textecageH = new JLabel("H");
 		textecageH.setFont(new Font("Verdana",1,20));
@@ -202,12 +214,94 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageI = new JPanel();
 		cageI.setBackground(Color.PINK);
-		cageI.setBounds(299, 133, 50, 50);
+		cageI.setBounds(290, 167, 50, 50);
 		cageI.addMouseListener(this);
 		JLabel texteCageI = new JLabel("I");
 		texteCageI.setFont(new Font("Verdana",1,20));
 		cageI.add(texteCageI);
-		contentPane.add(cageI);	
+		contentPane.add(cageI);
+		
+		
+		
+		But = new JButton("But");
+		But.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		But.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {		           
+				
+				if(zoneTrain == "") {
+					System.out.println("Sélectionnez une zone train");
+				}
+				if(zoneCage == "") {
+					System.out.println("Sélectionnez une zone cage");
+				}
+				
+				if(zoneTrain != "" && zoneCage != "") {
+					System.out.println("But");
+					zoneCage = "";
+					zoneTrain = "";
+				}
+				
+				 
+			}
+		});
+		But.setBackground(Color.RED);
+		But.setBounds(391, 81, 80, 40);
+		contentPane.add(But);
+		
+		PasBut = new JButton("Pas but");
+		PasBut.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		PasBut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(zoneTrain == "") {
+					System.out.println("Sélectionnez une zone train");
+				}
+				if(zoneCage == "") {
+					System.out.println("Sélectionnez une zone cage");
+				}
+				
+				if(zoneTrain != "" && zoneCage != "") {
+					System.out.println("Pas but");
+					zoneCage = "";
+					zoneTrain = "";
+				}
+				
+			}
+		});
+		PasBut.setBackground(Color.GREEN);
+		PasBut.setBounds(391, 132, 80, 40);
+		contentPane.add(PasBut);
+		
+		finDeMatch = new JButton("Fin de match");
+		finDeMatch.setBackground(Color.BLUE);
+		finDeMatch.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		finDeMatch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		finDeMatch.setBounds(366, 267, 115, 40);
+		contentPane.add(finDeMatch);
+		
+		JEditorPane editorPane = new JEditorPane();
+		editorPane.setBackground(Color.YELLOW);
+		editorPane.setBounds(0, 32, 132, 201);
+		contentPane.add(editorPane);
+		
+		txtZoneDeTire = new JTextField();
+		txtZoneDeTire.setEditable(false);
+		txtZoneDeTire.setBackground(Color.YELLOW);
+		txtZoneDeTire.setHorizontalAlignment(SwingConstants.CENTER);
+		txtZoneDeTire.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		txtZoneDeTire.setText("Zone de tire");
+		txtZoneDeTire.setBounds(22, 11, 86, 20);
+		contentPane.add(txtZoneDeTire);
+		txtZoneDeTire.setColumns(10);
+		
+		textField = new JTextField();
+		textField.setBackground(Color.CYAN);
+		textField.setBounds(152, 32, 204, 201);
+		contentPane.add(textField);
+		textField.setColumns(10);
 		
 	}
 
@@ -326,5 +420,4 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
-	
 }
