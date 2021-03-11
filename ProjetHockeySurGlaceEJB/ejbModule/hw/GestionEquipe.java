@@ -24,6 +24,7 @@ public class GestionEquipe implements GestionEquipeRemote {
 
 	@Override
 	public Equipe ajouterEquipe(Equipe eq) {
+		System.out.println("je suis la");
 		em.persist(eq);
 		return eq;
 	}

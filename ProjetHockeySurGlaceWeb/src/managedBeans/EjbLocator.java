@@ -9,6 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import hw.GestionEquipeRemote;
 import hw.GestionGardienRemote;
 import hw.GestionRencontreRemote;
 
@@ -47,10 +48,10 @@ public class EjbLocator {
 			return null;
 		}
 	}	
-	public GestionRencontreRemote getGestionRencontre() {
+	public GestionEquipeRemote getGestionEquipe() {
 		System.out.println("je suis dans le EjbLocator");
 
-		return getEjb(GestionRencontreRemote.class, "GestionRencontre");
+		return getEjb(GestionEquipeRemote.class, "GestionEquipe");
 	}
 // Rajouter ici une méthode pour tout nouvel EJB auquel on souhaite accéder
 	}

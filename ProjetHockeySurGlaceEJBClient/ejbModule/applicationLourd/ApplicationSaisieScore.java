@@ -3,22 +3,24 @@
  */
 package applicationLourd;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Collection;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import hw.GestionEquipeRemote;
-import hw.GestionGardienRemote;
+import hw.Equipe;
 import hw.GestionRencontreRemote;
-import managedBeans.EjbLocator;
 
 import java.awt.Color;
 import javax.swing.JButton;
@@ -61,7 +63,6 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	private JTextField txtZoneDeTire;
 
 	private GestionRencontreRemote gestionGardien;
-	private Collection<hw.Rencontre> lesModules=null;
 	
 
 	/**
@@ -236,11 +237,10 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		But.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		But.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
-				gestionGardien= EjbLocator.getLocator().getGestionRencontre();
+				executerServlet();
 				if(gestionGardien!=null)
 				{
 
-					lesModules=gestionGardien.listerRencontre();
 					System.out.println(" retour reussi ");
 				}
 				else {
@@ -318,6 +318,45 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		txtZoneDeTire.setColumns(10);
 		
 	}
+	private void executerServlet()
+	{
+		String nomEquipe="real madrid";
+		
+		try
+		{
+
+			URL url=new URL("http://localhost:8080/ProjetHockeySurGlaceWeb/equipe");
+			System.out.println(" 111111");
+			URLConnection connexion=url.openConnection();
+			System.out.println(" 111111");
+
+			connexion.setDoOutput(true);
+			System.out.println(" 111111");
+
+			ObjectOutputStream fluxsortie = new ObjectOutputStream(connexion.getOutputStream());
+			System.out.println(" 111111");
+
+			Equipe eq = new Equipe(nomEquipe);
+			System.out.println(" 111111");
+
+			fluxsortie.writeObject(eq);
+			System.out.println(" 111111");
+
+			ObjectInputStream fluxentree = new ObjectInputStream(connexion.getInputStream());
+			System.out.println(" 111111");
+
+			List<Equipe> produits = (List<Equipe>) fluxentree.readObject();
+			System.out.println(" 111111");
+			
+			
+		}
+		catch (Exception e)
+		{
+			System.out.println("erreur "+e);
+		}
+	
+	}
+	
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
