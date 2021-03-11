@@ -8,11 +8,18 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Collection;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import hw.GestionEquipeRemote;
+import hw.GestionGardienRemote;
+import hw.GestionRencontreRemote;
+import managedBeans.EjbLocator;
+
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -28,31 +35,33 @@ import javax.swing.SwingConstants;
 public class ApplicationSaisieScore extends JFrame implements MouseListener {
 
 	private JPanel contentPane;
-	JPanel train1;
-	JPanel train2;
-	JPanel train3;
-	JPanel train4;
-	JPanel train5;
-	JPanel train6;
+	private JPanel train1;
+	private JPanel train2;
+	private JPanel train3;
+	private JPanel train4;
+	private JPanel train5;
+	private JPanel train6;
 
-	JPanel cageA;
-	JPanel cageB;
-	JPanel cageC;
-	JPanel cageD;
-	JPanel cageE;
-	JPanel cageF;
-	JPanel cageG;
-	JPanel cageH;
-	JPanel cageI;
+	private JPanel cageA;
+	private JPanel cageB;
+	private JPanel cageC;
+	private JPanel cageD;
+	private JPanel cageE;
+	private JPanel cageF;
+	private JPanel cageG;
+	private JPanel cageH;
+	private JPanel cageI;
 	
-	String zoneTrain = "";
-	String zoneCage = "";
-	String tire ="";
+	private String zoneTrain = "";
+	private String zoneCage = "";
+	private String tire ="";
 	private JButton PasBut;
 	private JButton But;
 	private JButton finDeMatch;
 	private JTextField txtZoneDeTire;
-	private JTextField textField;
+
+	private GestionRencontreRemote gestionGardien;
+	private Collection<hw.Rencontre> lesModules=null;
 	
 
 	/**
@@ -226,7 +235,18 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		But = new JButton("But");
 		But.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		But.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {		           
+			public void actionPerformed(ActionEvent e) {	
+				gestionGardien= EjbLocator.getLocator().getGestionRencontre();
+				if(gestionGardien!=null)
+				{
+
+					lesModules=gestionGardien.listerRencontre();
+					System.out.println(" retour reussi ");
+				}
+				else {
+					System.out.println("erreur retour");
+
+				}
 				
 				if(zoneTrain == "") {
 					System.out.println("Sélectionnez une zone train");
@@ -296,12 +316,6 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		txtZoneDeTire.setBounds(22, 11, 86, 20);
 		contentPane.add(txtZoneDeTire);
 		txtZoneDeTire.setColumns(10);
-		
-		textField = new JTextField();
-		textField.setBackground(Color.CYAN);
-		textField.setBounds(152, 32, 204, 201);
-		contentPane.add(textField);
-		textField.setColumns(10);
 		
 	}
 

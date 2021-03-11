@@ -30,6 +30,7 @@ public class GestionRencontre implements GestionRencontreRemote {
 
 	@Override
 	public Collection<Rencontre> listerRencontre() {
+		System.out.println(" je suis dans l'ejb de Rencontre");
 		return em.createQuery("SELECT re FROM Rencontre re").getResultList();
 		
 	}

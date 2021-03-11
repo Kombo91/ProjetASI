@@ -3,6 +3,7 @@
 	<name>ProjetHockeySurGlaceEJBClient</name>
 	<comment></comment>
 	<projects>
+		<project>ProjetHockeySurGlaceWeb</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

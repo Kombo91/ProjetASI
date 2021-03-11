@@ -24,6 +24,7 @@ public class GestionGardien implements GestionGardienRemote {
 
 	@Override
 	public Collection<Gardien> listerGardien() {
+		System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
 		return em.createQuery("SELECT gr FROM Gardien gr").getResultList();
 
 	}
