@@ -62,7 +62,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	private JButton finDeMatch;
 	private JTextField txtZoneDeTire;
 
-	private GestionRencontreRemote gestionGardien;
+	
 	
 
 	/**
@@ -73,7 +73,12 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 			public void run() {
 				try {
 					ApplicationSaisieScore frame = new ApplicationSaisieScore();
-					frame.setVisible(true);
+					//if(VariableStatique.isInOpen()) {
+						frame.setVisible(true);
+						/*}
+					else {
+						System.out.println("nononononon");
+					}*/
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -238,15 +243,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		But.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				executerServlet();
-				if(gestionGardien!=null)
-				{
-
-					System.out.println(" retour reussi ");
-				}
-				else {
-					System.out.println("erreur retour");
-
-				}
+				
 				
 				if(zoneTrain == "") {
 					System.out.println("Sélectionnez une zone train");
@@ -257,8 +254,8 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 				
 				if(zoneTrain != "" && zoneCage != "") {
 					System.out.println("But");
-					zoneCage = "";
-					zoneTrain = "";
+					tire=zoneTrain+zoneCage+"But";
+					System.out.println("tire "+tire);
 				}
 				
 				 
@@ -345,7 +342,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 			ObjectInputStream fluxentree = new ObjectInputStream(connexion.getInputStream());
 			System.out.println(" 111111");
 
-			List<Equipe> produits = (List<Equipe>) fluxentree.readObject();
+			Equipe produits = (Equipe) fluxentree.readObject();
 			System.out.println(" 111111");
 			
 			
