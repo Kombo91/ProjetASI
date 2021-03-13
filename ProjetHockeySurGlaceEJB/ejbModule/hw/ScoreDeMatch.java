@@ -3,6 +3,8 @@
  */
 package hw;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,786 +15,795 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class ScoreDeMatch {
+public class ScoreDeMatch implements Serializable{
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO) 
 	private int id;
-	private int Gardien;
-	private int Rencontre;
-	private int train1CageABut;
-	private int train1CageApasBut;
-	private int train1CageBBut;
-	private int train1CageBpasBut;
-	private int train1CageCBut;
-	private int train1CageCpasBut;
-	private int train1CageDBut;
-	private int train1CageDpasBut;
-	private int train1CageEBut;
-	private int train1CageEpasBut;
-	private int train1CageFBut;
-	private int train1CageFpasBut;
-	private int train1CageGBut;
-	private int train1CageGpasBut;
-	private int train1CageHBut;
-	private int train1CageHpasBut;
-	private int train1CageIBut;
-	private int train1CageIpasBut;
-	private int train2CageABut;
-	private int train2CageApasBut;
-	private int train2CageBBut;
-	private int train2CageBpasBut;
-	private int train2CageCBut;
-	private int train2CageCpasBut;
-	private int train2CageDBut;
-	private int train2CageDpasBut;
-	private int train2CageEBut;
-	private int train2CageEpasBut;
-	private int train2CageFBut;
-	private int train2CageFpasBut;
-	private int train2CageGBut;
-	private int train2CageGpasBut;
-	private int train2CageHBut;
-	private int train2CageHpasBut;
-	private int train2CageIBut;
-	private int train2CageIpasBut;
-	private int train3CageABut;
-	private int train3CageApasBut;
-	private int train3CageBBut;
-	private int train3CageBpasBut;
-	private int train3CageCBut;
-	private int train3CageCpasBut;
-	private int train3CageDBut;
-	private int train3CageDpasBut;
-	private int train3CageEBut;
-	private int train3CageEpasBut;
-	private int train3CageFBut;
-	private int train3CageFpasBut;
-	private int train3CageGBut;
-	private int train3CageGpasBut;
-	private int train3CageHBut;
-	private int train3CageHpasBut;
-	private int train3CageIBut;
-	private int train3CageIpasBut;
-	private int train4CageABut;
-	private int train4CageApasBut;
-	private int train4CageBBut;
-	private int train4CageBpasBut;
-	private int train4CageCBut;
-	private int train4CageCpasBut;
-	private int train4CageDBut;
-	private int train4CageDpasBut;
-	private int train4CageEBut;
-	private int train4CageEpasBut;
-	private int train4CageFBut;
-	private int train4CageFpasBut;
-	private int train4CageGBut;
-	private int train4CageGpasBut;
-	private int train4CageHBut;
-	private int train4CageHpasBut;
-	private int train4CageIBut;
-	private int train4CageIpasBut;
-	private int train5CageABut;
-	private int train5CageApasBut;
-	private int train5CageBBut;
-	private int train5CageBpasBut;
-	private int train5CageCBut;
-	private int train5CageCpasBut;
-	private int train5CageDBut;
-	private int train5CageDpasBut;
-	private int train5CageEBut;
-	private int train5CageEpasBut;
-	private int train5CageFBut;
-	private int train5CageFpasBut;
-	private int train5CageGBut;
-	private int train5CageGpasBut;
-	private int train5CageHBut;
-	private int train5CageHpasBut;
-	private int train5CageIBut;
-	private int train5CageIpasBut;
-	private int train6CageABut;
-	private int train6CageApasBut;
-	private int train6CageBBut;
-	private int train6CageBpasBut;
-	private int train6CageCBut;
-	private int train6CageCpasBut;
-	private int train6CageDBut;
-	private int train6CageDpasBut;
-	private int train6CageEBut;
-	private int train6CageEpasBut;
-	private int train6CageFBut;
-	private int train6CageFpasBut;
-	private int train6CageGBut;
-	private int train6CageGpasBut;
-	private int train6CageHBut;
-	private int train6CageHpasBut;
-	private int train6CageIBut;
-	private int train6CageIpasBut;
+	private int idGardien;
+	private int idRencontre;
+	private int terrain1CageABut;
+	private int terrain1CageApasBut;
+	private int terrain1CageBBut;
+	private int terrain1CageBpasBut;
+	private int terrain1CageCBut;
+	private int terrain1CageCpasBut;
+	private int terrain1CageDBut;
+	private int terrain1CageDpasBut;
+	private int terrain1CageEBut;
+	private int terrain1CageEpasBut;
+	private int terrain1CageFBut;
+	private int terrain1CageFpasBut;
+	private int terrain1CageGBut;
+	private int terrain1CageGpasBut;
+	private int terrain1CageHBut;
+	private int terrain1CageHpasBut;
+	private int terrain1CageIBut;
+	private int terrain1CageIpasBut;
+	private int terrain2CageABut;
+	private int terrain2CageApasBut;
+	private int terrain2CageBBut;
+	private int terrain2CageBpasBut;
+	private int terrain2CageCBut;
+	private int terrain2CageCpasBut;
+	private int terrain2CageDBut;
+	private int terrain2CageDpasBut;
+	private int terrain2CageEBut;
+	private int terrain2CageEpasBut;
+	private int terrain2CageFBut;
+	private int terrain2CageFpasBut;
+	private int terrain2CageGBut;
+	private int terrain2CageGpasBut;
+	private int terrain2CageHBut;
+	private int terrain2CageHpasBut;
+	private int terrain2CageIBut;
+	private int terrain2CageIpasBut;
+	private int terrain3CageABut;
+	private int terrain3CageApasBut;
+	private int terrain3CageBBut;
+	private int terrain3CageBpasBut;
+	private int terrain3CageCBut;
+	private int terrain3CageCpasBut;
+	private int terrain3CageDBut;
+	private int terrain3CageDpasBut;
+	private int terrain3CageEBut;
+	private int terrain3CageEpasBut;
+	private int terrain3CageFBut;
+	private int terrain3CageFpasBut;
+	private int terrain3CageGBut;
+	private int terrain3CageGpasBut;
+	private int terrain3CageHBut;
+	private int terrain3CageHpasBut;
+	private int terrain3CageIBut;
+	private int terrain3CageIpasBut;
+	private int terrain4CageABut;
+	private int terrain4CageApasBut;
+	private int terrain4CageBBut;
+	private int terrain4CageBpasBut;
+	private int terrain4CageCBut;
+	private int terrain4CageCpasBut;
+	private int terrain4CageDBut;
+	private int terrain4CageDpasBut;
+	private int terrain4CageEBut;
+	private int terrain4CageEpasBut;
+	private int terrain4CageFBut;
+	private int terrain4CageFpasBut;
+	private int terrain4CageGBut;
+	private int terrain4CageGpasBut;
+	private int terrain4CageHBut;
+	private int terrain4CageHpasBut;
+	private int terrain4CageIBut;
+	private int terrain4CageIpasBut;
+	private int terrain5CageABut;
+	private int terrain5CageApasBut;
+	private int terrain5CageBBut;
+	private int terrain5CageBpasBut;
+	private int terrain5CageCBut;
+	private int terrain5CageCpasBut;
+	private int terrain5CageDBut;
+	private int terrain5CageDpasBut;
+	private int terrain5CageEBut;
+	private int terrain5CageEpasBut;
+	private int terrain5CageFBut;
+	private int terrain5CageFpasBut;
+	private int terrain5CageGBut;
+	private int terrain5CageGpasBut;
+	private int terrain5CageHBut;
+	private int terrain5CageHpasBut;
+	private int terrain5CageIBut;
+	private int terrain5CageIpasBut;
+	private int terrain6CageABut;
+	private int terrain6CageApasBut;
+	private int terrain6CageBBut;
+	private int terrain6CageBpasBut;
+	private int terrain6CageCBut;
+	private int terrain6CageCpasBut;
+	private int terrain6CageDBut;
+	private int terrain6CageDpasBut;
+	private int terrain6CageEBut;
+	private int terrain6CageEpasBut;
+	private int terrain6CageFBut;
+	private int terrain6CageFpasBut;
+	private int terrain6CageGBut;
+	private int terrain6CageGpasBut;
+	private int terrain6CageHBut;
+	private int terrain6CageHpasBut;
+	private int terrain6CageIBut;
+	private int terrain6CageIpasBut;
 	private String zoneDeTire;
+	
+	public ScoreDeMatch() {}
+	
+	public ScoreDeMatch(int idGardien, int idRencontre, String zoneDeTire) {
+		super();
+		this.idGardien = idGardien;
+		this.idRencontre = idRencontre;
+		this.zoneDeTire = zoneDeTire;
+	}
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getGardien() {
-		return Gardien;
+	public int getIdGardien() {
+		return idGardien;
 	}
-	public void setGardien(int gardien) {
-		Gardien = gardien;
+	public void setIdGardien(int idGardien) {
+		this.idGardien = idGardien;
 	}
-	public int getRencontre() {
-		return Rencontre;
+	public int getIdRencontre() {
+		return idRencontre;
 	}
-	public void setRencontre(int rencontre) {
-		Rencontre = rencontre;
+	public void setIdRencontre(int idRencontre) {
+		this.idRencontre = idRencontre;
 	}
-	public int getTrain1CageABut() {
-		return train1CageABut;
+	public int getTerrain1CageABut() {
+		return terrain1CageABut;
 	}
-	public void setTrain1CageABut(int train1CageABut) {
-		this.train1CageABut = train1CageABut;
+	public void setTerrain1CageABut(int terrain1CageABut) {
+		this.terrain1CageABut = terrain1CageABut;
 	}
-	public int getTrain1CageApasBut() {
-		return train1CageApasBut;
+	public int getTerrain1CageApasBut() {
+		return terrain1CageApasBut;
 	}
-	public void setTrain1CageApasBut(int train1CageApasBut) {
-		this.train1CageApasBut = train1CageApasBut;
+	public void setTerrain1CageApasBut(int terrain1CageApasBut) {
+		this.terrain1CageApasBut = terrain1CageApasBut;
 	}
-	public int getTrain1CageBBut() {
-		return train1CageBBut;
+	public int getTerrain1CageBBut() {
+		return terrain1CageBBut;
 	}
-	public void setTrain1CageBBut(int train1CageBBut) {
-		this.train1CageBBut = train1CageBBut;
+	public void setTerrain1CageBBut(int terrain1CageBBut) {
+		this.terrain1CageBBut = terrain1CageBBut;
 	}
-	public int getTrain1CageBpasBut() {
-		return train1CageBpasBut;
+	public int getTerrain1CageBpasBut() {
+		return terrain1CageBpasBut;
 	}
-	public void setTrain1CageBpasBut(int train1CageBpasBut) {
-		this.train1CageBpasBut = train1CageBpasBut;
+	public void setTerrain1CageBpasBut(int terrain1CageBpasBut) {
+		this.terrain1CageBpasBut = terrain1CageBpasBut;
 	}
-	public int getTrain1CageCBut() {
-		return train1CageCBut;
+	public int getTerrain1CageCBut() {
+		return terrain1CageCBut;
 	}
-	public void setTrain1CageCBut(int train1CageCBut) {
-		this.train1CageCBut = train1CageCBut;
+	public void setTerrain1CageCBut(int terrain1CageCBut) {
+		this.terrain1CageCBut = terrain1CageCBut;
 	}
-	public int getTrain1CageCpasBut() {
-		return train1CageCpasBut;
+	public int getTerrain1CageCpasBut() {
+		return terrain1CageCpasBut;
 	}
-	public void setTrain1CageCpasBut(int train1CageCpasBut) {
-		this.train1CageCpasBut = train1CageCpasBut;
+	public void setTerrain1CageCpasBut(int terrain1CageCpasBut) {
+		this.terrain1CageCpasBut = terrain1CageCpasBut;
 	}
-	public int getTrain1CageDBut() {
-		return train1CageDBut;
+	public int getTerrain1CageDBut() {
+		return terrain1CageDBut;
 	}
-	public void setTrain1CageDBut(int train1CageDBut) {
-		this.train1CageDBut = train1CageDBut;
+	public void setTerrain1CageDBut(int terrain1CageDBut) {
+		this.terrain1CageDBut = terrain1CageDBut;
 	}
-	public int getTrain1CageDpasBut() {
-		return train1CageDpasBut;
+	public int getTerrain1CageDpasBut() {
+		return terrain1CageDpasBut;
 	}
-	public void setTrain1CageDpasBut(int train1CageDpasBut) {
-		this.train1CageDpasBut = train1CageDpasBut;
+	public void setTerrain1CageDpasBut(int terrain1CageDpasBut) {
+		this.terrain1CageDpasBut = terrain1CageDpasBut;
 	}
-	public int getTrain1CageEBut() {
-		return train1CageEBut;
+	public int getTerrain1CageEBut() {
+		return terrain1CageEBut;
 	}
-	public void setTrain1CageEBut(int train1CageEBut) {
-		this.train1CageEBut = train1CageEBut;
+	public void setTerrain1CageEBut(int terrain1CageEBut) {
+		this.terrain1CageEBut = terrain1CageEBut;
 	}
-	public int getTrain1CageEpasBut() {
-		return train1CageEpasBut;
+	public int getTerrain1CageEpasBut() {
+		return terrain1CageEpasBut;
 	}
-	public void setTrain1CageEpasBut(int train1CageEpasBut) {
-		this.train1CageEpasBut = train1CageEpasBut;
+	public void setTerrain1CageEpasBut(int terrain1CageEpasBut) {
+		this.terrain1CageEpasBut = terrain1CageEpasBut;
 	}
-	public int getTrain1CageFBut() {
-		return train1CageFBut;
+	public int getTerrain1CageFBut() {
+		return terrain1CageFBut;
 	}
-	public void setTrain1CageFBut(int train1CageFBut) {
-		this.train1CageFBut = train1CageFBut;
+	public void setTerrain1CageFBut(int terrain1CageFBut) {
+		this.terrain1CageFBut = terrain1CageFBut;
 	}
-	public int getTrain1CageFpasBut() {
-		return train1CageFpasBut;
+	public int getTerrain1CageFpasBut() {
+		return terrain1CageFpasBut;
 	}
-	public void setTrain1CageFpasBut(int train1CageFpasBut) {
-		this.train1CageFpasBut = train1CageFpasBut;
+	public void setTerrain1CageFpasBut(int terrain1CageFpasBut) {
+		this.terrain1CageFpasBut = terrain1CageFpasBut;
 	}
-	public int getTrain1CageGBut() {
-		return train1CageGBut;
+	public int getTerrain1CageGBut() {
+		return terrain1CageGBut;
 	}
-	public void setTrain1CageGBut(int train1CageGBut) {
-		this.train1CageGBut = train1CageGBut;
+	public void setTerrain1CageGBut(int terrain1CageGBut) {
+		this.terrain1CageGBut = terrain1CageGBut;
 	}
-	public int getTrain1CageGpasBut() {
-		return train1CageGpasBut;
+	public int getTerrain1CageGpasBut() {
+		return terrain1CageGpasBut;
 	}
-	public void setTrain1CageGpasBut(int train1CageGpasBut) {
-		this.train1CageGpasBut = train1CageGpasBut;
+	public void setTerrain1CageGpasBut(int terrain1CageGpasBut) {
+		this.terrain1CageGpasBut = terrain1CageGpasBut;
 	}
-	public int getTrain1CageHBut() {
-		return train1CageHBut;
+	public int getTerrain1CageHBut() {
+		return terrain1CageHBut;
 	}
-	public void setTrain1CageHBut(int train1CageHBut) {
-		this.train1CageHBut = train1CageHBut;
+	public void setTerrain1CageHBut(int terrain1CageHBut) {
+		this.terrain1CageHBut = terrain1CageHBut;
 	}
-	public int getTrain1CageHpasBut() {
-		return train1CageHpasBut;
+	public int getTerrain1CageHpasBut() {
+		return terrain1CageHpasBut;
 	}
-	public void setTrain1CageHpasBut(int train1CageHpasBut) {
-		this.train1CageHpasBut = train1CageHpasBut;
+	public void setTerrain1CageHpasBut(int terrain1CageHpasBut) {
+		this.terrain1CageHpasBut = terrain1CageHpasBut;
 	}
-	public int getTrain1CageIBut() {
-		return train1CageIBut;
+	public int getTerrain1CageIBut() {
+		return terrain1CageIBut;
 	}
-	public void setTrain1CageIBut(int train1CageIBut) {
-		this.train1CageIBut = train1CageIBut;
+	public void setTerrain1CageIBut(int terrain1CageIBut) {
+		this.terrain1CageIBut = terrain1CageIBut;
 	}
-	public int getTrain1CageIpasBut() {
-		return train1CageIpasBut;
+	public int getTerrain1CageIpasBut() {
+		return terrain1CageIpasBut;
 	}
-	public void setTrain1CageIpasBut(int train1CageIpasBut) {
-		this.train1CageIpasBut = train1CageIpasBut;
+	public void setTerrain1CageIpasBut(int terrain1CageIpasBut) {
+		this.terrain1CageIpasBut = terrain1CageIpasBut;
 	}
-	public int getTrain2CageABut() {
-		return train2CageABut;
+	public int getTerrain2CageABut() {
+		return terrain2CageABut;
 	}
-	public void setTrain2CageABut(int train2CageABut) {
-		this.train2CageABut = train2CageABut;
+	public void setTerrain2CageABut(int terrain2CageABut) {
+		this.terrain2CageABut = terrain2CageABut;
 	}
-	public int getTrain2CageApasBut() {
-		return train2CageApasBut;
+	public int getTerrain2CageApasBut() {
+		return terrain2CageApasBut;
 	}
-	public void setTrain2CageApasBut(int train2CageApasBut) {
-		this.train2CageApasBut = train2CageApasBut;
+	public void setTerrain2CageApasBut(int terrain2CageApasBut) {
+		this.terrain2CageApasBut = terrain2CageApasBut;
 	}
-	public int getTrain2CageBBut() {
-		return train2CageBBut;
+	public int getTerrain2CageBBut() {
+		return terrain2CageBBut;
 	}
-	public void setTrain2CageBBut(int train2CageBBut) {
-		this.train2CageBBut = train2CageBBut;
+	public void setTerrain2CageBBut(int terrain2CageBBut) {
+		this.terrain2CageBBut = terrain2CageBBut;
 	}
-	public int getTrain2CageBpasBut() {
-		return train2CageBpasBut;
+	public int getTerrain2CageBpasBut() {
+		return terrain2CageBpasBut;
 	}
-	public void setTrain2CageBpasBut(int train2CageBpasBut) {
-		this.train2CageBpasBut = train2CageBpasBut;
+	public void setTerrain2CageBpasBut(int terrain2CageBpasBut) {
+		this.terrain2CageBpasBut = terrain2CageBpasBut;
 	}
-	public int getTrain2CageCBut() {
-		return train2CageCBut;
+	public int getTerrain2CageCBut() {
+		return terrain2CageCBut;
 	}
-	public void setTrain2CageCBut(int train2CageCBut) {
-		this.train2CageCBut = train2CageCBut;
+	public void setTerrain2CageCBut(int terrain2CageCBut) {
+		this.terrain2CageCBut = terrain2CageCBut;
 	}
-	public int getTrain2CageCpasBut() {
-		return train2CageCpasBut;
+	public int getTerrain2CageCpasBut() {
+		return terrain2CageCpasBut;
 	}
-	public void setTrain2CageCpasBut(int train2CageCpasBut) {
-		this.train2CageCpasBut = train2CageCpasBut;
+	public void setTerrain2CageCpasBut(int terrain2CageCpasBut) {
+		this.terrain2CageCpasBut = terrain2CageCpasBut;
 	}
-	public int getTrain2CageDBut() {
-		return train2CageDBut;
+	public int getTerrain2CageDBut() {
+		return terrain2CageDBut;
 	}
-	public void setTrain2CageDBut(int train2CageDBut) {
-		this.train2CageDBut = train2CageDBut;
+	public void setTerrain2CageDBut(int terrain2CageDBut) {
+		this.terrain2CageDBut = terrain2CageDBut;
 	}
-	public int getTrain2CageDpasBut() {
-		return train2CageDpasBut;
+	public int getTerrain2CageDpasBut() {
+		return terrain2CageDpasBut;
 	}
-	public void setTrain2CageDpasBut(int train2CageDpasBut) {
-		this.train2CageDpasBut = train2CageDpasBut;
+	public void setTerrain2CageDpasBut(int terrain2CageDpasBut) {
+		this.terrain2CageDpasBut = terrain2CageDpasBut;
 	}
-	public int getTrain2CageEBut() {
-		return train2CageEBut;
+	public int getTerrain2CageEBut() {
+		return terrain2CageEBut;
 	}
-	public void setTrain2CageEBut(int train2CageEBut) {
-		this.train2CageEBut = train2CageEBut;
+	public void setTerrain2CageEBut(int terrain2CageEBut) {
+		this.terrain2CageEBut = terrain2CageEBut;
 	}
-	public int getTrain2CageEpasBut() {
-		return train2CageEpasBut;
+	public int getTerrain2CageEpasBut() {
+		return terrain2CageEpasBut;
 	}
-	public void setTrain2CageEpasBut(int train2CageEpasBut) {
-		this.train2CageEpasBut = train2CageEpasBut;
+	public void setTerrain2CageEpasBut(int terrain2CageEpasBut) {
+		this.terrain2CageEpasBut = terrain2CageEpasBut;
 	}
-	public int getTrain2CageFBut() {
-		return train2CageFBut;
+	public int getTerrain2CageFBut() {
+		return terrain2CageFBut;
 	}
-	public void setTrain2CageFBut(int train2CageFBut) {
-		this.train2CageFBut = train2CageFBut;
+	public void setTerrain2CageFBut(int terrain2CageFBut) {
+		this.terrain2CageFBut = terrain2CageFBut;
 	}
-	public int getTrain2CageFpasBut() {
-		return train2CageFpasBut;
+	public int getTerrain2CageFpasBut() {
+		return terrain2CageFpasBut;
 	}
-	public void setTrain2CageFpasBut(int train2CageFpasBut) {
-		this.train2CageFpasBut = train2CageFpasBut;
+	public void setTerrain2CageFpasBut(int terrain2CageFpasBut) {
+		this.terrain2CageFpasBut = terrain2CageFpasBut;
 	}
-	public int getTrain2CageGBut() {
-		return train2CageGBut;
+	public int getTerrain2CageGBut() {
+		return terrain2CageGBut;
 	}
-	public void setTrain2CageGBut(int train2CageGBut) {
-		this.train2CageGBut = train2CageGBut;
+	public void setTerrain2CageGBut(int terrain2CageGBut) {
+		this.terrain2CageGBut = terrain2CageGBut;
 	}
-	public int getTrain2CageGpasBut() {
-		return train2CageGpasBut;
+	public int getTerrain2CageGpasBut() {
+		return terrain2CageGpasBut;
 	}
-	public void setTrain2CageGpasBut(int train2CageGpasBut) {
-		this.train2CageGpasBut = train2CageGpasBut;
+	public void setTerrain2CageGpasBut(int terrain2CageGpasBut) {
+		this.terrain2CageGpasBut = terrain2CageGpasBut;
 	}
-	public int getTrain2CageHBut() {
-		return train2CageHBut;
+	public int getTerrain2CageHBut() {
+		return terrain2CageHBut;
 	}
-	public void setTrain2CageHBut(int train2CageHBut) {
-		this.train2CageHBut = train2CageHBut;
+	public void setTerrain2CageHBut(int terrain2CageHBut) {
+		this.terrain2CageHBut = terrain2CageHBut;
 	}
-	public int getTrain2CageHpasBut() {
-		return train2CageHpasBut;
+	public int getTerrain2CageHpasBut() {
+		return terrain2CageHpasBut;
 	}
-	public void setTrain2CageHpasBut(int train2CageHpasBut) {
-		this.train2CageHpasBut = train2CageHpasBut;
+	public void setTerrain2CageHpasBut(int terrain2CageHpasBut) {
+		this.terrain2CageHpasBut = terrain2CageHpasBut;
 	}
-	public int getTrain2CageIBut() {
-		return train2CageIBut;
+	public int getTerrain2CageIBut() {
+		return terrain2CageIBut;
 	}
-	public void setTrain2CageIBut(int train2CageIBut) {
-		this.train2CageIBut = train2CageIBut;
+	public void setTerrain2CageIBut(int terrain2CageIBut) {
+		this.terrain2CageIBut = terrain2CageIBut;
 	}
-	public int getTrain2CageIpasBut() {
-		return train2CageIpasBut;
+	public int getTerrain2CageIpasBut() {
+		return terrain2CageIpasBut;
 	}
-	public void setTrain2CageIpasBut(int train2CageIpasBut) {
-		this.train2CageIpasBut = train2CageIpasBut;
+	public void setTerrain2CageIpasBut(int terrain2CageIpasBut) {
+		this.terrain2CageIpasBut = terrain2CageIpasBut;
 	}
-	public int getTrain3CageABut() {
-		return train3CageABut;
+	public int getTerrain3CageABut() {
+		return terrain3CageABut;
 	}
-	public void setTrain3CageABut(int train3CageABut) {
-		this.train3CageABut = train3CageABut;
+	public void setTerrain3CageABut(int terrain3CageABut) {
+		this.terrain3CageABut = terrain3CageABut;
 	}
-	public int getTrain3CageApasBut() {
-		return train3CageApasBut;
+	public int getTerrain3CageApasBut() {
+		return terrain3CageApasBut;
 	}
-	public void setTrain3CageApasBut(int train3CageApasBut) {
-		this.train3CageApasBut = train3CageApasBut;
+	public void setTerrain3CageApasBut(int terrain3CageApasBut) {
+		this.terrain3CageApasBut = terrain3CageApasBut;
 	}
-	public int getTrain3CageBBut() {
-		return train3CageBBut;
+	public int getTerrain3CageBBut() {
+		return terrain3CageBBut;
 	}
-	public void setTrain3CageBBut(int train3CageBBut) {
-		this.train3CageBBut = train3CageBBut;
+	public void setTerrain3CageBBut(int terrain3CageBBut) {
+		this.terrain3CageBBut = terrain3CageBBut;
 	}
-	public int getTrain3CageBpasBut() {
-		return train3CageBpasBut;
+	public int getTerrain3CageBpasBut() {
+		return terrain3CageBpasBut;
 	}
-	public void setTrain3CageBpasBut(int train3CageBpasBut) {
-		this.train3CageBpasBut = train3CageBpasBut;
+	public void setTerrain3CageBpasBut(int terrain3CageBpasBut) {
+		this.terrain3CageBpasBut = terrain3CageBpasBut;
 	}
-	public int getTrain3CageCBut() {
-		return train3CageCBut;
+	public int getTerrain3CageCBut() {
+		return terrain3CageCBut;
 	}
-	public void setTrain3CageCBut(int train3CageCBut) {
-		this.train3CageCBut = train3CageCBut;
+	public void setTerrain3CageCBut(int terrain3CageCBut) {
+		this.terrain3CageCBut = terrain3CageCBut;
 	}
-	public int getTrain3CageCpasBut() {
-		return train3CageCpasBut;
+	public int getTerrain3CageCpasBut() {
+		return terrain3CageCpasBut;
 	}
-	public void setTrain3CageCpasBut(int train3CageCpasBut) {
-		this.train3CageCpasBut = train3CageCpasBut;
+	public void setTerrain3CageCpasBut(int terrain3CageCpasBut) {
+		this.terrain3CageCpasBut = terrain3CageCpasBut;
 	}
-	public int getTrain3CageDBut() {
-		return train3CageDBut;
+	public int getTerrain3CageDBut() {
+		return terrain3CageDBut;
 	}
-	public void setTrain3CageDBut(int train3CageDBut) {
-		this.train3CageDBut = train3CageDBut;
+	public void setTerrain3CageDBut(int terrain3CageDBut) {
+		this.terrain3CageDBut = terrain3CageDBut;
 	}
-	public int getTrain3CageDpasBut() {
-		return train3CageDpasBut;
+	public int getTerrain3CageDpasBut() {
+		return terrain3CageDpasBut;
 	}
-	public void setTrain3CageDpasBut(int train3CageDpasBut) {
-		this.train3CageDpasBut = train3CageDpasBut;
+	public void setTerrain3CageDpasBut(int terrain3CageDpasBut) {
+		this.terrain3CageDpasBut = terrain3CageDpasBut;
 	}
-	public int getTrain3CageEBut() {
-		return train3CageEBut;
+	public int getTerrain3CageEBut() {
+		return terrain3CageEBut;
 	}
-	public void setTrain3CageEBut(int train3CageEBut) {
-		this.train3CageEBut = train3CageEBut;
+	public void setTerrain3CageEBut(int terrain3CageEBut) {
+		this.terrain3CageEBut = terrain3CageEBut;
 	}
-	public int getTrain3CageEpasBut() {
-		return train3CageEpasBut;
+	public int getTerrain3CageEpasBut() {
+		return terrain3CageEpasBut;
 	}
-	public void setTrain3CageEpasBut(int train3CageEpasBut) {
-		this.train3CageEpasBut = train3CageEpasBut;
+	public void setTerrain3CageEpasBut(int terrain3CageEpasBut) {
+		this.terrain3CageEpasBut = terrain3CageEpasBut;
 	}
-	public int getTrain3CageFBut() {
-		return train3CageFBut;
+	public int getTerrain3CageFBut() {
+		return terrain3CageFBut;
 	}
-	public void setTrain3CageFBut(int train3CageFBut) {
-		this.train3CageFBut = train3CageFBut;
+	public void setTerrain3CageFBut(int terrain3CageFBut) {
+		this.terrain3CageFBut = terrain3CageFBut;
 	}
-	public int getTrain3CageFpasBut() {
-		return train3CageFpasBut;
+	public int getTerrain3CageFpasBut() {
+		return terrain3CageFpasBut;
 	}
-	public void setTrain3CageFpasBut(int train3CageFpasBut) {
-		this.train3CageFpasBut = train3CageFpasBut;
+	public void setTerrain3CageFpasBut(int terrain3CageFpasBut) {
+		this.terrain3CageFpasBut = terrain3CageFpasBut;
 	}
-	public int getTrain3CageGBut() {
-		return train3CageGBut;
+	public int getTerrain3CageGBut() {
+		return terrain3CageGBut;
 	}
-	public void setTrain3CageGBut(int train3CageGBut) {
-		this.train3CageGBut = train3CageGBut;
+	public void setTerrain3CageGBut(int terrain3CageGBut) {
+		this.terrain3CageGBut = terrain3CageGBut;
 	}
-	public int getTrain3CageGpasBut() {
-		return train3CageGpasBut;
+	public int getTerrain3CageGpasBut() {
+		return terrain3CageGpasBut;
 	}
-	public void setTrain3CageGpasBut(int train3CageGpasBut) {
-		this.train3CageGpasBut = train3CageGpasBut;
+	public void setTerrain3CageGpasBut(int terrain3CageGpasBut) {
+		this.terrain3CageGpasBut = terrain3CageGpasBut;
 	}
-	public int getTrain3CageHBut() {
-		return train3CageHBut;
+	public int getTerrain3CageHBut() {
+		return terrain3CageHBut;
 	}
-	public void setTrain3CageHBut(int train3CageHBut) {
-		this.train3CageHBut = train3CageHBut;
+	public void setTerrain3CageHBut(int terrain3CageHBut) {
+		this.terrain3CageHBut = terrain3CageHBut;
 	}
-	public int getTrain3CageHpasBut() {
-		return train3CageHpasBut;
+	public int getTerrain3CageHpasBut() {
+		return terrain3CageHpasBut;
 	}
-	public void setTrain3CageHpasBut(int train3CageHpasBut) {
-		this.train3CageHpasBut = train3CageHpasBut;
+	public void setTerrain3CageHpasBut(int terrain3CageHpasBut) {
+		this.terrain3CageHpasBut = terrain3CageHpasBut;
 	}
-	public int getTrain3CageIBut() {
-		return train3CageIBut;
+	public int getTerrain3CageIBut() {
+		return terrain3CageIBut;
 	}
-	public void setTrain3CageIBut(int train3CageIBut) {
-		this.train3CageIBut = train3CageIBut;
+	public void setTerrain3CageIBut(int terrain3CageIBut) {
+		this.terrain3CageIBut = terrain3CageIBut;
 	}
-	public int getTrain3CageIpasBut() {
-		return train3CageIpasBut;
+	public int getTerrain3CageIpasBut() {
+		return terrain3CageIpasBut;
 	}
-	public void setTrain3CageIpasBut(int train3CageIpasBut) {
-		this.train3CageIpasBut = train3CageIpasBut;
+	public void setTerrain3CageIpasBut(int terrain3CageIpasBut) {
+		this.terrain3CageIpasBut = terrain3CageIpasBut;
 	}
-	public int getTrain4CageABut() {
-		return train4CageABut;
+	public int getTerrain4CageABut() {
+		return terrain4CageABut;
 	}
-	public void setTrain4CageABut(int train4CageABut) {
-		this.train4CageABut = train4CageABut;
+	public void setTerrain4CageABut(int terrain4CageABut) {
+		this.terrain4CageABut = terrain4CageABut;
 	}
-	public int getTrain4CageApasBut() {
-		return train4CageApasBut;
+	public int getTerrain4CageApasBut() {
+		return terrain4CageApasBut;
 	}
-	public void setTrain4CageApasBut(int train4CageApasBut) {
-		this.train4CageApasBut = train4CageApasBut;
+	public void setTerrain4CageApasBut(int terrain4CageApasBut) {
+		this.terrain4CageApasBut = terrain4CageApasBut;
 	}
-	public int getTrain4CageBBut() {
-		return train4CageBBut;
+	public int getTerrain4CageBBut() {
+		return terrain4CageBBut;
 	}
-	public void setTrain4CageBBut(int train4CageBBut) {
-		this.train4CageBBut = train4CageBBut;
+	public void setTerrain4CageBBut(int terrain4CageBBut) {
+		this.terrain4CageBBut = terrain4CageBBut;
 	}
-	public int getTrain4CageBpasBut() {
-		return train4CageBpasBut;
+	public int getTerrain4CageBpasBut() {
+		return terrain4CageBpasBut;
 	}
-	public void setTrain4CageBpasBut(int train4CageBpasBut) {
-		this.train4CageBpasBut = train4CageBpasBut;
+	public void setTerrain4CageBpasBut(int terrain4CageBpasBut) {
+		this.terrain4CageBpasBut = terrain4CageBpasBut;
 	}
-	public int getTrain4CageCBut() {
-		return train4CageCBut;
+	public int getTerrain4CageCBut() {
+		return terrain4CageCBut;
 	}
-	public void setTrain4CageCBut(int train4CageCBut) {
-		this.train4CageCBut = train4CageCBut;
+	public void setTerrain4CageCBut(int terrain4CageCBut) {
+		this.terrain4CageCBut = terrain4CageCBut;
 	}
-	public int getTrain4CageCpasBut() {
-		return train4CageCpasBut;
+	public int getTerrain4CageCpasBut() {
+		return terrain4CageCpasBut;
 	}
-	public void setTrain4CageCpasBut(int train4CageCpasBut) {
-		this.train4CageCpasBut = train4CageCpasBut;
+	public void setTerrain4CageCpasBut(int terrain4CageCpasBut) {
+		this.terrain4CageCpasBut = terrain4CageCpasBut;
 	}
-	public int getTrain4CageDBut() {
-		return train4CageDBut;
+	public int getTerrain4CageDBut() {
+		return terrain4CageDBut;
 	}
-	public void setTrain4CageDBut(int train4CageDBut) {
-		this.train4CageDBut = train4CageDBut;
+	public void setTerrain4CageDBut(int terrain4CageDBut) {
+		this.terrain4CageDBut = terrain4CageDBut;
 	}
-	public int getTrain4CageDpasBut() {
-		return train4CageDpasBut;
+	public int getTerrain4CageDpasBut() {
+		return terrain4CageDpasBut;
 	}
-	public void setTrain4CageDpasBut(int train4CageDpasBut) {
-		this.train4CageDpasBut = train4CageDpasBut;
+	public void setTerrain4CageDpasBut(int terrain4CageDpasBut) {
+		this.terrain4CageDpasBut = terrain4CageDpasBut;
 	}
-	public int getTrain4CageEBut() {
-		return train4CageEBut;
+	public int getTerrain4CageEBut() {
+		return terrain4CageEBut;
 	}
-	public void setTrain4CageEBut(int train4CageEBut) {
-		this.train4CageEBut = train4CageEBut;
+	public void setTerrain4CageEBut(int terrain4CageEBut) {
+		this.terrain4CageEBut = terrain4CageEBut;
 	}
-	public int getTrain4CageEpasBut() {
-		return train4CageEpasBut;
+	public int getTerrain4CageEpasBut() {
+		return terrain4CageEpasBut;
 	}
-	public void setTrain4CageEpasBut(int train4CageEpasBut) {
-		this.train4CageEpasBut = train4CageEpasBut;
+	public void setTerrain4CageEpasBut(int terrain4CageEpasBut) {
+		this.terrain4CageEpasBut = terrain4CageEpasBut;
 	}
-	public int getTrain4CageFBut() {
-		return train4CageFBut;
+	public int getTerrain4CageFBut() {
+		return terrain4CageFBut;
 	}
-	public void setTrain4CageFBut(int train4CageFBut) {
-		this.train4CageFBut = train4CageFBut;
+	public void setTerrain4CageFBut(int terrain4CageFBut) {
+		this.terrain4CageFBut = terrain4CageFBut;
 	}
-	public int getTrain4CageFpasBut() {
-		return train4CageFpasBut;
+	public int getTerrain4CageFpasBut() {
+		return terrain4CageFpasBut;
 	}
-	public void setTrain4CageFpasBut(int train4CageFpasBut) {
-		this.train4CageFpasBut = train4CageFpasBut;
+	public void setTerrain4CageFpasBut(int terrain4CageFpasBut) {
+		this.terrain4CageFpasBut = terrain4CageFpasBut;
 	}
-	public int getTrain4CageGBut() {
-		return train4CageGBut;
+	public int getTerrain4CageGBut() {
+		return terrain4CageGBut;
 	}
-	public void setTrain4CageGBut(int train4CageGBut) {
-		this.train4CageGBut = train4CageGBut;
+	public void setTerrain4CageGBut(int terrain4CageGBut) {
+		this.terrain4CageGBut = terrain4CageGBut;
 	}
-	public int getTrain4CageGpasBut() {
-		return train4CageGpasBut;
+	public int getTerrain4CageGpasBut() {
+		return terrain4CageGpasBut;
 	}
-	public void setTrain4CageGpasBut(int train4CageGpasBut) {
-		this.train4CageGpasBut = train4CageGpasBut;
+	public void setTerrain4CageGpasBut(int terrain4CageGpasBut) {
+		this.terrain4CageGpasBut = terrain4CageGpasBut;
 	}
-	public int getTrain4CageHBut() {
-		return train4CageHBut;
+	public int getTerrain4CageHBut() {
+		return terrain4CageHBut;
 	}
-	public void setTrain4CageHBut(int train4CageHBut) {
-		this.train4CageHBut = train4CageHBut;
+	public void setTerrain4CageHBut(int terrain4CageHBut) {
+		this.terrain4CageHBut = terrain4CageHBut;
 	}
-	public int getTrain4CageHpasBut() {
-		return train4CageHpasBut;
+	public int getTerrain4CageHpasBut() {
+		return terrain4CageHpasBut;
 	}
-	public void setTrain4CageHpasBut(int train4CageHpasBut) {
-		this.train4CageHpasBut = train4CageHpasBut;
+	public void setTerrain4CageHpasBut(int terrain4CageHpasBut) {
+		this.terrain4CageHpasBut = terrain4CageHpasBut;
 	}
-	public int getTrain4CageIBut() {
-		return train4CageIBut;
+	public int getTerrain4CageIBut() {
+		return terrain4CageIBut;
 	}
-	public void setTrain4CageIBut(int train4CageIBut) {
-		this.train4CageIBut = train4CageIBut;
+	public void setTerrain4CageIBut(int terrain4CageIBut) {
+		this.terrain4CageIBut = terrain4CageIBut;
 	}
-	public int getTrain4CageIpasBut() {
-		return train4CageIpasBut;
+	public int getTerrain4CageIpasBut() {
+		return terrain4CageIpasBut;
 	}
-	public void setTrain4CageIpasBut(int train4CageIpasBut) {
-		this.train4CageIpasBut = train4CageIpasBut;
+	public void setTerrain4CageIpasBut(int terrain4CageIpasBut) {
+		this.terrain4CageIpasBut = terrain4CageIpasBut;
 	}
-	public int getTrain5CageABut() {
-		return train5CageABut;
+	public int getTerrain5CageABut() {
+		return terrain5CageABut;
 	}
-	public void setTrain5CageABut(int train5CageABut) {
-		this.train5CageABut = train5CageABut;
+	public void setTerrain5CageABut(int terrain5CageABut) {
+		this.terrain5CageABut = terrain5CageABut;
 	}
-	public int getTrain5CageApasBut() {
-		return train5CageApasBut;
+	public int getTerrain5CageApasBut() {
+		return terrain5CageApasBut;
 	}
-	public void setTrain5CageApasBut(int train5CageApasBut) {
-		this.train5CageApasBut = train5CageApasBut;
+	public void setTerrain5CageApasBut(int terrain5CageApasBut) {
+		this.terrain5CageApasBut = terrain5CageApasBut;
 	}
-	public int getTrain5CageBBut() {
-		return train5CageBBut;
+	public int getTerrain5CageBBut() {
+		return terrain5CageBBut;
 	}
-	public void setTrain5CageBBut(int train5CageBBut) {
-		this.train5CageBBut = train5CageBBut;
+	public void setTerrain5CageBBut(int terrain5CageBBut) {
+		this.terrain5CageBBut = terrain5CageBBut;
 	}
-	public int getTrain5CageBpasBut() {
-		return train5CageBpasBut;
+	public int getTerrain5CageBpasBut() {
+		return terrain5CageBpasBut;
 	}
-	public void setTrain5CageBpasBut(int train5CageBpasBut) {
-		this.train5CageBpasBut = train5CageBpasBut;
+	public void setTerrain5CageBpasBut(int terrain5CageBpasBut) {
+		this.terrain5CageBpasBut = terrain5CageBpasBut;
 	}
-	public int getTrain5CageCBut() {
-		return train5CageCBut;
+	public int getTerrain5CageCBut() {
+		return terrain5CageCBut;
 	}
-	public void setTrain5CageCBut(int train5CageCBut) {
-		this.train5CageCBut = train5CageCBut;
+	public void setTerrain5CageCBut(int terrain5CageCBut) {
+		this.terrain5CageCBut = terrain5CageCBut;
 	}
-	public int getTrain5CageCpasBut() {
-		return train5CageCpasBut;
+	public int getTerrain5CageCpasBut() {
+		return terrain5CageCpasBut;
 	}
-	public void setTrain5CageCpasBut(int train5CageCpasBut) {
-		this.train5CageCpasBut = train5CageCpasBut;
+	public void setTerrain5CageCpasBut(int terrain5CageCpasBut) {
+		this.terrain5CageCpasBut = terrain5CageCpasBut;
 	}
-	public int getTrain5CageDBut() {
-		return train5CageDBut;
+	public int getTerrain5CageDBut() {
+		return terrain5CageDBut;
 	}
-	public void setTrain5CageDBut(int train5CageDBut) {
-		this.train5CageDBut = train5CageDBut;
+	public void setTerrain5CageDBut(int terrain5CageDBut) {
+		this.terrain5CageDBut = terrain5CageDBut;
 	}
-	public int getTrain5CageDpasBut() {
-		return train5CageDpasBut;
+	public int getTerrain5CageDpasBut() {
+		return terrain5CageDpasBut;
 	}
-	public void setTrain5CageDpasBut(int train5CageDpasBut) {
-		this.train5CageDpasBut = train5CageDpasBut;
+	public void setTerrain5CageDpasBut(int terrain5CageDpasBut) {
+		this.terrain5CageDpasBut = terrain5CageDpasBut;
 	}
-	public int getTrain5CageEBut() {
-		return train5CageEBut;
+	public int getTerrain5CageEBut() {
+		return terrain5CageEBut;
 	}
-	public void setTrain5CageEBut(int train5CageEBut) {
-		this.train5CageEBut = train5CageEBut;
+	public void setTerrain5CageEBut(int terrain5CageEBut) {
+		this.terrain5CageEBut = terrain5CageEBut;
 	}
-	public int getTrain5CageEpasBut() {
-		return train5CageEpasBut;
+	public int getTerrain5CageEpasBut() {
+		return terrain5CageEpasBut;
 	}
-	public void setTrain5CageEpasBut(int train5CageEpasBut) {
-		this.train5CageEpasBut = train5CageEpasBut;
+	public void setTerrain5CageEpasBut(int terrain5CageEpasBut) {
+		this.terrain5CageEpasBut = terrain5CageEpasBut;
 	}
-	public int getTrain5CageFBut() {
-		return train5CageFBut;
+	public int getTerrain5CageFBut() {
+		return terrain5CageFBut;
 	}
-	public void setTrain5CageFBut(int train5CageFBut) {
-		this.train5CageFBut = train5CageFBut;
+	public void setTerrain5CageFBut(int terrain5CageFBut) {
+		this.terrain5CageFBut = terrain5CageFBut;
 	}
-	public int getTrain5CageFpasBut() {
-		return train5CageFpasBut;
+	public int getTerrain5CageFpasBut() {
+		return terrain5CageFpasBut;
 	}
-	public void setTrain5CageFpasBut(int train5CageFpasBut) {
-		this.train5CageFpasBut = train5CageFpasBut;
+	public void setTerrain5CageFpasBut(int terrain5CageFpasBut) {
+		this.terrain5CageFpasBut = terrain5CageFpasBut;
 	}
-	public int getTrain5CageGBut() {
-		return train5CageGBut;
+	public int getTerrain5CageGBut() {
+		return terrain5CageGBut;
 	}
-	public void setTrain5CageGBut(int train5CageGBut) {
-		this.train5CageGBut = train5CageGBut;
+	public void setTerrain5CageGBut(int terrain5CageGBut) {
+		this.terrain5CageGBut = terrain5CageGBut;
 	}
-	public int getTrain5CageGpasBut() {
-		return train5CageGpasBut;
+	public int getTerrain5CageGpasBut() {
+		return terrain5CageGpasBut;
 	}
-	public void setTrain5CageGpasBut(int train5CageGpasBut) {
-		this.train5CageGpasBut = train5CageGpasBut;
+	public void setTerrain5CageGpasBut(int terrain5CageGpasBut) {
+		this.terrain5CageGpasBut = terrain5CageGpasBut;
 	}
-	public int getTrain5CageHBut() {
-		return train5CageHBut;
+	public int getTerrain5CageHBut() {
+		return terrain5CageHBut;
 	}
-	public void setTrain5CageHBut(int train5CageHBut) {
-		this.train5CageHBut = train5CageHBut;
+	public void setTerrain5CageHBut(int terrain5CageHBut) {
+		this.terrain5CageHBut = terrain5CageHBut;
 	}
-	public int getTrain5CageHpasBut() {
-		return train5CageHpasBut;
+	public int getTerrain5CageHpasBut() {
+		return terrain5CageHpasBut;
 	}
-	public void setTrain5CageHpasBut(int train5CageHpasBut) {
-		this.train5CageHpasBut = train5CageHpasBut;
+	public void setTerrain5CageHpasBut(int terrain5CageHpasBut) {
+		this.terrain5CageHpasBut = terrain5CageHpasBut;
 	}
-	public int getTrain5CageIBut() {
-		return train5CageIBut;
+	public int getTerrain5CageIBut() {
+		return terrain5CageIBut;
 	}
-	public void setTrain5CageIBut(int train5CageIBut) {
-		this.train5CageIBut = train5CageIBut;
+	public void setTerrain5CageIBut(int terrain5CageIBut) {
+		this.terrain5CageIBut = terrain5CageIBut;
 	}
-	public int getTrain5CageIpasBut() {
-		return train5CageIpasBut;
+	public int getTerrain5CageIpasBut() {
+		return terrain5CageIpasBut;
 	}
-	public void setTrain5CageIpasBut(int train5CageIpasBut) {
-		this.train5CageIpasBut = train5CageIpasBut;
+	public void setTerrain5CageIpasBut(int terrain5CageIpasBut) {
+		this.terrain5CageIpasBut = terrain5CageIpasBut;
 	}
-	public int getTrain6CageABut() {
-		return train6CageABut;
+	public int getTerrain6CageABut() {
+		return terrain6CageABut;
 	}
-	public void setTrain6CageABut(int train6CageABut) {
-		this.train6CageABut = train6CageABut;
+	public void setTerrain6CageABut(int terrain6CageABut) {
+		this.terrain6CageABut = terrain6CageABut;
 	}
-	public int getTrain6CageApasBut() {
-		return train6CageApasBut;
+	public int getTerrain6CageApasBut() {
+		return terrain6CageApasBut;
 	}
-	public void setTrain6CageApasBut(int train6CageApasBut) {
-		this.train6CageApasBut = train6CageApasBut;
+	public void setTerrain6CageApasBut(int terrain6CageApasBut) {
+		this.terrain6CageApasBut = terrain6CageApasBut;
 	}
-	public int getTrain6CageBBut() {
-		return train6CageBBut;
+	public int getTerrain6CageBBut() {
+		return terrain6CageBBut;
 	}
-	public void setTrain6CageBBut(int train6CageBBut) {
-		this.train6CageBBut = train6CageBBut;
+	public void setTerrain6CageBBut(int terrain6CageBBut) {
+		this.terrain6CageBBut = terrain6CageBBut;
 	}
-	public int getTrain6CageBpasBut() {
-		return train6CageBpasBut;
+	public int getTerrain6CageBpasBut() {
+		return terrain6CageBpasBut;
 	}
-	public void setTrain6CageBpasBut(int train6CageBpasBut) {
-		this.train6CageBpasBut = train6CageBpasBut;
+	public void setTerrain6CageBpasBut(int terrain6CageBpasBut) {
+		this.terrain6CageBpasBut = terrain6CageBpasBut;
 	}
-	public int getTrain6CageCBut() {
-		return train6CageCBut;
+	public int getTerrain6CageCBut() {
+		return terrain6CageCBut;
 	}
-	public void setTrain6CageCBut(int train6CageCBut) {
-		this.train6CageCBut = train6CageCBut;
+	public void setTerrain6CageCBut(int terrain6CageCBut) {
+		this.terrain6CageCBut = terrain6CageCBut;
 	}
-	public int getTrain6CageCpasBut() {
-		return train6CageCpasBut;
+	public int getTerrain6CageCpasBut() {
+		return terrain6CageCpasBut;
 	}
-	public void setTrain6CageCpasBut(int train6CageCpasBut) {
-		this.train6CageCpasBut = train6CageCpasBut;
+	public void setTerrain6CageCpasBut(int terrain6CageCpasBut) {
+		this.terrain6CageCpasBut = terrain6CageCpasBut;
 	}
-	public int getTrain6CageDBut() {
-		return train6CageDBut;
+	public int getTerrain6CageDBut() {
+		return terrain6CageDBut;
 	}
-	public void setTrain6CageDBut(int train6CageDBut) {
-		this.train6CageDBut = train6CageDBut;
+	public void setTerrain6CageDBut(int terrain6CageDBut) {
+		this.terrain6CageDBut = terrain6CageDBut;
 	}
-	public int getTrain6CageDpasBut() {
-		return train6CageDpasBut;
+	public int getTerrain6CageDpasBut() {
+		return terrain6CageDpasBut;
 	}
-	public void setTrain6CageDpasBut(int train6CageDpasBut) {
-		this.train6CageDpasBut = train6CageDpasBut;
+	public void setTerrain6CageDpasBut(int terrain6CageDpasBut) {
+		this.terrain6CageDpasBut = terrain6CageDpasBut;
 	}
-	public int getTrain6CageEBut() {
-		return train6CageEBut;
+	public int getTerrain6CageEBut() {
+		return terrain6CageEBut;
 	}
-	public void setTrain6CageEBut(int train6CageEBut) {
-		this.train6CageEBut = train6CageEBut;
+	public void setTerrain6CageEBut(int terrain6CageEBut) {
+		this.terrain6CageEBut = terrain6CageEBut;
 	}
-	public int getTrain6CageEpasBut() {
-		return train6CageEpasBut;
+	public int getTerrain6CageEpasBut() {
+		return terrain6CageEpasBut;
 	}
-	public void setTrain6CageEpasBut(int train6CageEpasBut) {
-		this.train6CageEpasBut = train6CageEpasBut;
+	public void setTerrain6CageEpasBut(int terrain6CageEpasBut) {
+		this.terrain6CageEpasBut = terrain6CageEpasBut;
 	}
-	public int getTrain6CageFBut() {
-		return train6CageFBut;
+	public int getTerrain6CageFBut() {
+		return terrain6CageFBut;
 	}
-	public void setTrain6CageFBut(int train6CageFBut) {
-		this.train6CageFBut = train6CageFBut;
+	public void setTerrain6CageFBut(int terrain6CageFBut) {
+		this.terrain6CageFBut = terrain6CageFBut;
 	}
-	public int getTrain6CageFpasBut() {
-		return train6CageFpasBut;
+	public int getTerrain6CageFpasBut() {
+		return terrain6CageFpasBut;
 	}
-	public void setTrain6CageFpasBut(int train6CageFpasBut) {
-		this.train6CageFpasBut = train6CageFpasBut;
+	public void setTerrain6CageFpasBut(int terrain6CageFpasBut) {
+		this.terrain6CageFpasBut = terrain6CageFpasBut;
 	}
-	public int getTrain6CageGBut() {
-		return train6CageGBut;
+	public int getTerrain6CageGBut() {
+		return terrain6CageGBut;
 	}
-	public void setTrain6CageGBut(int train6CageGBut) {
-		this.train6CageGBut = train6CageGBut;
+	public void setTerrain6CageGBut(int terrain6CageGBut) {
+		this.terrain6CageGBut = terrain6CageGBut;
 	}
-	public int getTrain6CageGpasBut() {
-		return train6CageGpasBut;
+	public int getTerrain6CageGpasBut() {
+		return terrain6CageGpasBut;
 	}
-	public void setTrain6CageGpasBut(int train6CageGpasBut) {
-		this.train6CageGpasBut = train6CageGpasBut;
+	public void setTerrain6CageGpasBut(int terrain6CageGpasBut) {
+		this.terrain6CageGpasBut = terrain6CageGpasBut;
 	}
-	public int getTrain6CageHBut() {
-		return train6CageHBut;
+	public int getTerrain6CageHBut() {
+		return terrain6CageHBut;
 	}
-	public void setTrain6CageHBut(int train6CageHBut) {
-		this.train6CageHBut = train6CageHBut;
+	public void setTerrain6CageHBut(int terrain6CageHBut) {
+		this.terrain6CageHBut = terrain6CageHBut;
 	}
-	public int getTrain6CageHpasBut() {
-		return train6CageHpasBut;
+	public int getTerrain6CageHpasBut() {
+		return terrain6CageHpasBut;
 	}
-	public void setTrain6CageHpasBut(int train6CageHpasBut) {
-		this.train6CageHpasBut = train6CageHpasBut;
+	public void setTerrain6CageHpasBut(int terrain6CageHpasBut) {
+		this.terrain6CageHpasBut = terrain6CageHpasBut;
 	}
-	public int getTrain6CageIBut() {
-		return train6CageIBut;
+	public int getTerrain6CageIBut() {
+		return terrain6CageIBut;
 	}
-	public void setTrain6CageIBut(int train6CageIBut) {
-		this.train6CageIBut = train6CageIBut;
+	public void setTerrain6CageIBut(int terrain6CageIBut) {
+		this.terrain6CageIBut = terrain6CageIBut;
 	}
-	public int getTrain6CageIpasBut() {
-		return train6CageIpasBut;
+	public int getTerrain6CageIpasBut() {
+		return terrain6CageIpasBut;
 	}
-	public void setTrain6CageIpasBut(int train6CageIpasBut) {
-		this.train6CageIpasBut = train6CageIpasBut;
+	public void setTerrain6CageIpasBut(int terrain6CageIpasBut) {
+		this.terrain6CageIpasBut = terrain6CageIpasBut;
 	}
 	public String getZoneDeTire() {
 		return zoneDeTire;

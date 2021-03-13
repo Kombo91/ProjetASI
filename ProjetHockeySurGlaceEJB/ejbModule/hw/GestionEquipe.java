@@ -1,5 +1,8 @@
 package hw;
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.Collection;
 
 import javax.ejb.LocalBean;
@@ -26,7 +29,7 @@ public class GestionEquipe implements GestionEquipeRemote {
 	public Equipe ajouterEquipe(Equipe eq) {
 		System.out.println("je suis la");
 		em.persist(eq);
-		return eq;
+			return eq;
 	}
 
 	@Override

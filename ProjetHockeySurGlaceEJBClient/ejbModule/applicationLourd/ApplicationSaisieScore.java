@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 
 import hw.Equipe;
 import hw.GestionRencontreRemote;
+import hw.ScoreDeMatch;
 
 import java.awt.Color;
 import javax.swing.JButton;
@@ -37,12 +38,12 @@ import javax.swing.SwingConstants;
 public class ApplicationSaisieScore extends JFrame implements MouseListener {
 
 	private JPanel contentPane;
-	private JPanel train1;
-	private JPanel train2;
-	private JPanel train3;
-	private JPanel train4;
-	private JPanel train5;
-	private JPanel train6;
+	private JPanel terrain1;
+	private JPanel terrain2;
+	private JPanel terrain3;
+	private JPanel terrain4;
+	private JPanel terrain5;
+	private JPanel terrain6;
 
 	private JPanel cageA;
 	private JPanel cageB;
@@ -54,16 +55,29 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	private JPanel cageH;
 	private JPanel cageI;
 	
-	private String zoneTrain = "";
+	private String zoneterrain = "";
 	private String zoneCage = "";
 	private String tire ="";
 	private JButton PasBut;
 	private JButton But;
 	private JButton finDeMatch;
 	private JTextField txtZoneDeTire;
-
 	
+	private int idGardien;
+	private int idRencontre;
 	
+	public int getIdGardien() {
+		return idGardien;
+	}
+	public void setIdGardien(int idGardien) {
+		this.idGardien = idGardien;
+	}
+	public int getIdRencontre() {
+		return idRencontre;
+	}
+	public void setIdRencontre(int idRencontre) {
+		this.idRencontre = idRencontre;
+	}
 
 	/**
 	 * Launch the application.
@@ -99,59 +113,59 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		
 		/////// JPanel terain
-		train1 = new JPanel();
-		train1.setBackground(Color.PINK);
-		train1.setBounds(10, 45, 50, 50);
-		train1.addMouseListener(this);
-		JLabel texteTrain1 = new JLabel("1");
-		texteTrain1.setFont(new Font("Verdana",1,20));
-	    train1.add(texteTrain1);
-		contentPane.add(train1);
+		terrain1 = new JPanel();
+		terrain1.setBackground(Color.PINK);
+		terrain1.setBounds(10, 45, 50, 50);
+		terrain1.addMouseListener(this);
+		JLabel texteterrain1 = new JLabel("1");
+		texteterrain1.setFont(new Font("Verdana",1,20));
+	    terrain1.add(texteterrain1);
+		contentPane.add(terrain1);
 		
-		train2 = new JPanel();
-		train2.setBackground(Color.PINK);
-		train2.setBounds(70, 45, 50, 50);
-		train2.addMouseListener(this);
-		JLabel texteTrain2 = new JLabel("2");
-		texteTrain2.setFont(new Font("Verdana",1,20));
-	    train2.add(texteTrain2);
-		contentPane.add(train2);
+		terrain2 = new JPanel();
+		terrain2.setBackground(Color.PINK);
+		terrain2.setBounds(70, 45, 50, 50);
+		terrain2.addMouseListener(this);
+		JLabel texteterrain2 = new JLabel("2");
+		texteterrain2.setFont(new Font("Verdana",1,20));
+	    terrain2.add(texteterrain2);
+		contentPane.add(terrain2);
 		
-		train3 = new JPanel();
-		train3.setBackground(Color.PINK);
-		train3.setBounds(10, 106, 50, 50);
-		train3.addMouseListener(this);
-		JLabel texteTrain3 = new JLabel("3");
-		texteTrain3.setFont(new Font("Verdana",1,20));
-	    train3.add(texteTrain3);
-		contentPane.add(train3);
+		terrain3 = new JPanel();
+		terrain3.setBackground(Color.PINK);
+		terrain3.setBounds(10, 106, 50, 50);
+		terrain3.addMouseListener(this);
+		JLabel texteterrain3 = new JLabel("3");
+		texteterrain3.setFont(new Font("Verdana",1,20));
+	    terrain3.add(texteterrain3);
+		contentPane.add(terrain3);
 		
-		train4 = new JPanel();
-		train4.setBackground(Color.PINK);
-		train4.setBounds(70, 106, 50, 50);
-		train4.addMouseListener(this);
-		JLabel texteTrain4 = new JLabel("4");
-		texteTrain4.setFont(new Font("Verdana",1,20));
-	    train4.add(texteTrain4);
-		contentPane.add(train4);
+		terrain4 = new JPanel();
+		terrain4.setBackground(Color.PINK);
+		terrain4.setBounds(70, 106, 50, 50);
+		terrain4.addMouseListener(this);
+		JLabel texteterrain4 = new JLabel("4");
+		texteterrain4.setFont(new Font("Verdana",1,20));
+	    terrain4.add(texteterrain4);
+		contentPane.add(terrain4);
 		
-		train5 = new JPanel();
-		train5.setBackground(Color.PINK);
-		train5.setBounds(10, 167, 50, 50);
-		train5.addMouseListener(this);
-		JLabel texteTrain5 = new JLabel("5");
-		texteTrain5.setFont(new Font("Verdana",1,20));
-	    train5.add(texteTrain5);
-	    contentPane.add(train5);
+		terrain5 = new JPanel();
+		terrain5.setBackground(Color.PINK);
+		terrain5.setBounds(10, 167, 50, 50);
+		terrain5.addMouseListener(this);
+		JLabel texteterrain5 = new JLabel("5");
+		texteterrain5.setFont(new Font("Verdana",1,20));
+	    terrain5.add(texteterrain5);
+	    contentPane.add(terrain5);
 		
-	    train6 = new JPanel();
-	    train6.setBackground(Color.PINK);
-	    train6.setBounds(70, 167, 50, 50);
-		train6.addMouseListener(this);
-		JLabel texteTrain6 = new JLabel("6");
-		texteTrain6.setFont(new Font("Verdana",1,20));
-	    train6.add(texteTrain6);
-		contentPane.add(train6);
+	    terrain6 = new JPanel();
+	    terrain6.setBackground(Color.PINK);
+	    terrain6.setBounds(70, 167, 50, 50);
+		terrain6.addMouseListener(this);
+		JLabel texteterrain6 = new JLabel("6");
+		texteterrain6.setFont(new Font("Verdana",1,20));
+	    terrain6.add(texteterrain6);
+		contentPane.add(terrain6);
 		
 		///// JPanel
 		
@@ -242,20 +256,21 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		But.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		But.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
-				executerServlet();
 				
 				
-				if(zoneTrain == "") {
-					System.out.println("Sélectionnez une zone train");
+				
+				if(zoneterrain == "") {
+					System.out.println("Sélectionnez une zone terrain");
 				}
 				if(zoneCage == "") {
 					System.out.println("Sélectionnez une zone cage");
 				}
 				
-				if(zoneTrain != "" && zoneCage != "") {
+				if(zoneterrain != "" && zoneCage != "") {
 					System.out.println("But");
-					tire=zoneTrain+zoneCage+"But";
+					tire=zoneterrain+zoneCage+"But";
 					System.out.println("tire "+tire);
+					executerServlet();
 				}
 				
 				 
@@ -269,17 +284,19 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		PasBut.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		PasBut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(zoneTrain == "") {
-					System.out.println("Sélectionnez une zone train");
+				if(zoneterrain == "") {
+					System.out.println("Sélectionnez une zone terrain");
 				}
 				if(zoneCage == "") {
 					System.out.println("Sélectionnez une zone cage");
 				}
 				
-				if(zoneTrain != "" && zoneCage != "") {
+				if(zoneterrain != "" && zoneCage != "") {
 					System.out.println("Pas but");
+					tire=zoneterrain+zoneCage+"pasBut";
 					zoneCage = "";
-					zoneTrain = "";
+					zoneterrain = "";
+					executerServlet();
 				}
 				
 			}
@@ -318,11 +335,13 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	private void executerServlet()
 	{
 		String nomEquipe="real madrid";
+		idGardien = 5;
+		idRencontre = 2 ;
 		
 		try
 		{
 
-			URL url=new URL("http://localhost:8080/ProjetHockeySurGlaceWeb/equipe");
+			URL url=new URL("http://localhost:8080/ProjetHockeySurGlaceWeb/ScoreDeMatch");
 			System.out.println(" 111111");
 			URLConnection connexion=url.openConnection();
 			System.out.println(" 111111");
@@ -332,17 +351,16 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 
 			ObjectOutputStream fluxsortie = new ObjectOutputStream(connexion.getOutputStream());
 			System.out.println(" 111111");
-
-			Equipe eq = new Equipe(nomEquipe);
+			ScoreDeMatch sdm = new ScoreDeMatch (idGardien,idRencontre,tire);
 			System.out.println(" 111111");
 
-			fluxsortie.writeObject(eq);
+			fluxsortie.writeObject(sdm);
 			System.out.println(" 111111");
 
 			ObjectInputStream fluxentree = new ObjectInputStream(connexion.getInputStream());
 			System.out.println(" 111111");
 
-			Equipe produits = (Equipe) fluxentree.readObject();
+			ScoreDeMatch produits = (ScoreDeMatch) fluxentree.readObject();
 			System.out.println(" 111111");
 			
 			
@@ -357,42 +375,42 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
 		//// terain 1
-		if (e.getSource() == train1) {
-	           System.out.println("train 1");
-	           zoneTrain="train1";
-	           System.out.println(zoneTrain);
+		if (e.getSource() == terrain1) {
+	           System.out.println("terrain 1");
+	           zoneterrain="terrain1";
+	           System.out.println(zoneterrain);
 	           
 	        }
-		if (e.getSource() == train2) {
-	           System.out.println("train 2");
-	           zoneTrain="train2";
-	           System.out.println(zoneTrain);
+		if (e.getSource() == terrain2) {
+	           System.out.println("terrain 2");
+	           zoneterrain="terrain2";
+	           System.out.println(zoneterrain);
 
 	        }
-		if (e.getSource() == train3) {
-	           System.out.println("train 3");
-	           zoneTrain="train3";
-	           System.out.println(zoneTrain);
+		if (e.getSource() == terrain3) {
+	           System.out.println("terrain 3");
+	           zoneterrain="terrain3";
+	           System.out.println(zoneterrain);
 
 	        }
-		if (e.getSource() == train4) {
-	           System.out.println("train 4");
-	           zoneTrain="train4";
-	           System.out.println(zoneTrain);
+		if (e.getSource() == terrain4) {
+	           System.out.println("terrain 4");
+	           zoneterrain="terrain4";
+	           System.out.println(zoneterrain);
 
 	        }
-		if (e.getSource() == train5) {
-	           System.out.println("train 5");
-	           zoneTrain="train5";
-	           System.out.println(zoneTrain);
+		if (e.getSource() == terrain5) {
+	           System.out.println("terrain 5");
+	           zoneterrain="terrain5";
+	           System.out.println(zoneterrain);
 
 	        }
-		if (e.getSource() == train6) {
-	           System.out.println("train 6");
-	           zoneTrain="train6";
-	           System.out.println(zoneTrain);
+		if (e.getSource() == terrain6) {
+	           System.out.println("terrain 6");
+	           zoneterrain="terrain6";
+	           System.out.println(zoneterrain);
 
 	        }
 		

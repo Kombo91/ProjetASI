@@ -12,6 +12,7 @@ import javax.naming.NamingException;
 import hw.GestionEquipeRemote;
 import hw.GestionGardienRemote;
 import hw.GestionRencontreRemote;
+import hw.GestionScoreDeMatchRemote;
 
 /**
  * @author KP
@@ -52,6 +53,11 @@ public class EjbLocator {
 		System.out.println("je suis dans le EjbLocator");
 
 		return getEjb(GestionEquipeRemote.class, "GestionEquipe");
+	}
+	public GestionScoreDeMatchRemote getGestionScoreDeMatch() {
+		System.out.println("je suis dans le EjbLocator");
+
+		return getEjb(GestionScoreDeMatchRemote.class, "GestionScoreDeMatch");
 	}
 // Rajouter ici une méthode pour tout nouvel EJB auquel on souhaite accéder
 	}
