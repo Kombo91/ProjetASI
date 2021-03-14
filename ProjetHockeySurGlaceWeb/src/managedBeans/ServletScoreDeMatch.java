@@ -45,7 +45,7 @@ public class ServletScoreDeMatch extends HttpServlet {
     	out.println("<html>");
     	out.println("<head><title>Test de servlet</title></head>");
     	out.println("<body>");
-    	out.println("ServletScoreDeMatch");
+    	out.println("Affichage de contenu de la Servlet Score De Match");
     	out.println("</body>");
     	out.println("</html>");
     }

@@ -9,30 +9,28 @@ import java.util.Hashtable;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import hw.Equipe;
 import hw.GestionEquipeRemote;
-import hw.GestionRencontreRemote;
-import hw.Rencontre;
+import hw.GestionConnexionRemote;
+import hw.Utilisateur;
 
 /**
- * Servlet implementation class ServletEquipe
+ * Servlet implementation class ServletConnexion
  */
-@WebServlet("/equipe")
-public class ServletEquipe extends HttpServlet {
+@WebServlet("/connexion")
+public class ServletConnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletEquipe() {
+    public ServletConnexion() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,24 +45,23 @@ public class ServletEquipe extends HttpServlet {
     	out.println("<html>");
     	out.println("<head><title>Test de servlet</title></head>");
     	out.println("<body>");
-    	out.println("Affichage de contenu de la Servlet Equipe");
+    	out.println("Affichage de contenu de la Servlet Connexion");
     	out.println("</body>");
     	out.println("</html>");
     }
 
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	GestionEquipeRemote gestionEquipe=null; 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	GestionConnexionRemote gestionEquipe=null; 
     	final Hashtable jndiProperties = new Hashtable();
 		jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
 		Context context=null;	
 		
 		try {
 			context = new InitialContext(jndiProperties);
-			gestionEquipe = EjbLocator.getLocator().getGestionEquipe();
+			gestionEquipe = EjbLocator.getLocator().getGestionConnexion();
 
 		} catch (NamingException e1) {
 			e1.printStackTrace();
@@ -72,15 +69,16 @@ public class ServletEquipe extends HttpServlet {
     	
 		try {
 			ObjectInputStream entree=new ObjectInputStream(request.getInputStream());
-			Equipe eq=(Equipe)entree.readObject();
-			gestionEquipe.ajouterEquipe(eq);
+			Utilisateur  eq=(Utilisateur)entree.readObject();
+			Utilisateur ut = gestionEquipe.connexion(eq);
+			System.out.println("utttttttttttttttt" +ut);
 			ObjectOutputStream sortie=new ObjectOutputStream(response.getOutputStream());
-			sortie.writeObject(eq);
+			sortie.writeObject(ut);
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			// TODO: handle exception
 		}
     }
-    }
 
-
+}

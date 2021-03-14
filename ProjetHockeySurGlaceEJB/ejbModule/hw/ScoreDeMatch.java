@@ -132,6 +132,11 @@ public class ScoreDeMatch implements Serializable{
 	private String zoneDeTire;
 	
 	public ScoreDeMatch() {}
+	public ScoreDeMatch(int idGardien, int idRencontre) {
+		super();
+		this.idGardien = idGardien;
+		this.idRencontre = idRencontre;
+	}
 	
 	public ScoreDeMatch(int idGardien, int idRencontre, String zoneDeTire) {
 		super();

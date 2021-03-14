@@ -15,13 +15,14 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Gardien implements Serializable {
+public class Gardien implements Serializable{
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO) 
 	private int id;
 	private String nom;
 	private String prenom;
 	private int Age;
+	private int idEquipe;
 	public int getId() {
 		return id;
 	}
