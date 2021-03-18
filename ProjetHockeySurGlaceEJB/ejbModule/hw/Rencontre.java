@@ -18,35 +18,41 @@ import javax.persistence.Id;
 public class Rencontre implements Serializable {
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO) 
-	private int id;
+	private int idRencontre;
 
-	private int idEquipe1;
-	private int idEquipe2;
+	private int idMonEquipe;
+	private int idEquipeAdvers;
 	private String statueRencontre;
 	
 	public Rencontre(int eq1,int eq2) {
-		this.idEquipe1 = eq1; 
-		this.idEquipe2 = eq2;
+		this.idMonEquipe = eq1; 
+		this.idEquipeAdvers = eq2;
 		this.statueRencontre = "En cours";
 	}
-	public int getId() {
-		return id;
+	/**
+	 * 
+	 */
+	public Rencontre() {
+		// TODO Auto-generated constructor stub
 	}
-	public void setId(int id) {
-		this.id = id;
+	public int getIdRencontre() {
+		return idRencontre;
 	}
-	public int getIdEquipe1() {
-		return idEquipe1;
+	public void setIdRencontre(int idRencontre) {
+		this.idRencontre = idRencontre;
 	}
-	public void setIdEquipe1(int idEquipe1) {
-		this.idEquipe1 = idEquipe1;
+	public int getIdMonEquipe() {
+		return idMonEquipe;
+	}
+	public void setIdMonEquipe(int idMonEquipe) {
+		this.idMonEquipe = idMonEquipe;
 	}
 
-	public int getIdEquipe2() {
-		return idEquipe2;
+	public int getIdEquipeAdvers() {
+		return idEquipeAdvers;
 	}
-	public void setIdEquipe2(int idEquipe2) {
-		this.idEquipe2 = idEquipe2;
+	public void setIdEquipeAdvers(int idEquipeAdvers) {
+		this.idEquipeAdvers = idEquipeAdvers;
 	}
 	public String getStatueRencontre() {
 		return statueRencontre;

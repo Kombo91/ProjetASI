@@ -3,37 +3,32 @@ package managedBeans;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.util.Hashtable;
-import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-
-import hw.Equipe;
-import hw.GestionEquipeRemote;
-import hw.GestionRencontreRemote;
-import hw.Rencontre;
+import hw.GestionConnexionRemote;
+import hw.Utilisateur;
 
 /**
- * Servlet implementation class ServletEquipe
+ * Servlet implementation class ServletUtilisateurConnecte
  */
-@WebServlet("/equipe")
-public class ServletEquipe extends HttpServlet {
+@WebServlet("/utilisateurConnecte")
+public class ServletUtilisateurConnecte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletEquipe() {
+    public ServletUtilisateurConnecte() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,31 +36,23 @@ public class ServletEquipe extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	PrintWriter out=null;
-    	response.setContentType("text/html");
-    	out=response.getWriter();
-    	out.println("<html>");
-    	out.println("<head><title>Test de servlet</title></head>");
-    	out.println("<body>");
-    	out.println("Affichage de contenu de la Servlet Equipe");
-    	out.println("</body>");
-    	out.println("</html>");
-    }
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	GestionEquipeRemote gestionEquipe=null; 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	GestionConnexionRemote gestionEquipe=null; 
     	final Hashtable jndiProperties = new Hashtable();
 		jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
 		Context context=null;	
 		
 		try {
 			context = new InitialContext(jndiProperties);
-			gestionEquipe = EjbLocator.getLocator().getGestionEquipe();
+			gestionEquipe = EjbLocator.getLocator().getGestionConnexion();
 
 		} catch (NamingException e1) {
 			e1.printStackTrace();
@@ -73,15 +60,20 @@ public class ServletEquipe extends HttpServlet {
     	
 		try {
 			ObjectInputStream entree=new ObjectInputStream(request.getInputStream());
-			int id=(int)entree.readObject();
-			List<Equipe> equipes = (List<Equipe>) gestionEquipe.listerEquipe(id);
+			int  id=(int) entree.readObject();
+			gestionEquipe.connexion(id);
+			HttpSession session = request.getSession();
+
+	        session.setAttribute("nom", id);
 			ObjectOutputStream sortie=new ObjectOutputStream(response.getOutputStream());
-			sortie.writeObject(equipes);
+			sortie.writeObject(id);
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			// TODO: handle exception
 		}
     }
-    }
 
 
+
+}

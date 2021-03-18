@@ -33,6 +33,7 @@ public class Connexion extends JFrame {
 	private JTextField pseudo;
 	private JTextField pwd;
 	private JLabel msgErreur;
+	
 	ConnexionAuxServlet conAuxServ = new ConnexionAuxServlet();
 	/**
 	 * Launch the application.
@@ -79,10 +80,27 @@ public class Connexion extends JFrame {
 		JButton connexionButton = new JButton("Connexion");
 		connexionButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Utilisateur util = conAuxServ.connexion( pseudo.getText(),pwd.getText());
-				if (util != null) {
-					System.out.println("aaaaaaaaaaa je ne suis pass nul");
-					new ChoixDuMatch().setVisible(true);
+				Utilisateur util = conAuxServ.connexion(pseudo.getText(),pwd.getText());
+				System.out.println("util "+util);
+				 
+
+				if (util.getPseudo() != null) {
+					if (!util.isEst_connecte()) {
+						System.out.println("aaaaaaaaaaa je ne suis pass nul" );
+						conAuxServ.connecte(util.getIdUtilisateur());
+						VariableStatique.setChoixDuMatchInOpen(true);
+						VariableStatique.setIdUtilisteur(util.getIdUtilisateur());
+						VariableStatique.setIdMonEquipe(util.getIdEquipe());
+						dispose();
+						new ChoixDuMatch().setVisible(true);
+						//System.out.println("session "+sessionScope.prenom);
+					}
+					else {
+						System.out.println("aaaaaaaaaaa je suis nul");
+						msgErreur.setText("Un autre utilisateur est connecté avec les mêmes coordonnées");
+					}
+					
+
 				}
 				else {
 					System.out.println("aaaaaaaaaaa je suis nul");
@@ -106,7 +124,7 @@ public class Connexion extends JFrame {
 		
 		msgErreur = new JLabel("");
 		msgErreur.setForeground(Color.RED);
-		msgErreur.setBounds(95, 141, 267, 25);
+		msgErreur.setBounds(32, 141, 369, 25);
 		contentPane.add(msgErreur);
 	}
 	

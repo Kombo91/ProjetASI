@@ -18,7 +18,7 @@ import javax.persistence.Id;
 public class ScoreDeMatch implements Serializable{
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO) 
-	private int id;
+	private int idScoreDeMatch;
 	private int idGardien;
 	private int idRencontre;
 	private int terrain1CageABut;
@@ -144,11 +144,11 @@ public class ScoreDeMatch implements Serializable{
 		this.idRencontre = idRencontre;
 		this.zoneDeTire = zoneDeTire;
 	}
-	public int getId() {
-		return id;
+	public int getIdScoreDeMatch() {
+		return idScoreDeMatch;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdScoreDeMatch(int idScoreDeMatch) {
+		this.idScoreDeMatch = idScoreDeMatch;
 	}
 	public int getIdGardien() {
 		return idGardien;

@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hw.GestionScoreDeMatchRemote;
+import hw.Rencontre;
 import hw.GestionConnexionRemote;
+import hw.GestionRencontreRemote;
 import hw.ScoreDeMatch;
 import hw.Utilisateur;
 /**
@@ -56,14 +58,14 @@ public class ServletAjouterRencontre extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	GestionScoreDeMatchRemote gestionEquipe=null; 
+    	GestionRencontreRemote gestionEquipe=null; 
     	final Hashtable jndiProperties = new Hashtable();
 		jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
 		Context context=null;	
 		
 		try {
 			context = new InitialContext(jndiProperties);
-			gestionEquipe = EjbLocator.getLocator().getGestionScoreDeMatch();
+			gestionEquipe = EjbLocator.getLocator().getGestionRencontre();
 
 		} catch (NamingException e1) {
 			e1.printStackTrace();
@@ -71,11 +73,11 @@ public class ServletAjouterRencontre extends HttpServlet {
     	
 		try {
 			ObjectInputStream entree=new ObjectInputStream(request.getInputStream());
-			ScoreDeMatch  sdm=(ScoreDeMatch)entree.readObject();
-			ScoreDeMatch sdmret = gestionEquipe.ajouterScoreDeMatch(sdm);
-			System.out.println("utttttttttttttttt" +sdmret);
+			Rencontre  sdm=(Rencontre)entree.readObject();
+			Rencontre rcd = gestionEquipe.ajouterRencontre(sdm);
+			System.out.println("utttttttttttttttt" +rcd);
 			ObjectOutputStream sortie=new ObjectOutputStream(response.getOutputStream());
-			sortie.writeObject(sdmret);
+			sortie.writeObject(rcd);
 
 		} catch (Exception e) {
 			e.printStackTrace();

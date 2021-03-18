@@ -25,8 +25,7 @@ public class GestionConnexion implements GestionConnexionRemote {
     	try {
 			user1 = (Utilisateur) em.createQuery("SELECT c FROM Utilisateur c WHERE c.pseudo = '"+user.getPseudo()+"' and c.mots_de_passe ='"+ user.getMots_de_passe()+"'").getSingleResult();
 			if(user1 != null) {
-	    		user1.setEst_connecte(true);
-	    		em.persist(user1);
+	    		
 	    		return user1;
 	    	}
 		} catch (Exception e) {
@@ -39,10 +38,22 @@ public class GestionConnexion implements GestionConnexionRemote {
     	
     	
     }
-
 	@Override
-	public void deconnexion(Utilisateur user) {
+	public int connexion(int idUtilisateur) {
 		// TODO Auto-generated method stub
+		Utilisateur sdj =  em.find(Utilisateur.class, idUtilisateur);
+		sdj.setEst_connecte(true);
+		em.persist(sdj);
+		return idUtilisateur;
+		
+	}
+	@Override
+	public int deconnexion(int idUtilisateur) {
+		// TODO Auto-generated method stub
+		Utilisateur sdj =  em.find(Utilisateur.class, idUtilisateur);
+		sdj.setEst_connecte(false);
+		em.persist(sdj);
+		return idUtilisateur;
 		
 	}
 

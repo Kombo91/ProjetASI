@@ -59,14 +59,14 @@ public class ServletRecupererToutLesGardiens extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	GestionGardienRemote gestionEquipe=null; 
+    	GestionGardienRemote gestionGardien=null; 
     	final Hashtable jndiProperties = new Hashtable();
 		jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
 		Context context=null;	
 		
 		try {
 			context = new InitialContext(jndiProperties);
-			gestionEquipe = EjbLocator.getLocator().getGestionGardien();
+			gestionGardien = EjbLocator.getLocator().getGestionGardien();
 
 		} catch (NamingException e1) {
 			e1.printStackTrace();
@@ -74,8 +74,8 @@ public class ServletRecupererToutLesGardiens extends HttpServlet {
     	
 		try {
 			ObjectInputStream entree=new ObjectInputStream(request.getInputStream());
-			Gardien  sdm=(Gardien)entree.readObject();
-			Collection<Gardien> sdmret = gestionEquipe.listerGardien();
+			int  id=(int)entree.readObject();
+			Collection<Gardien> sdmret = gestionGardien.listerGardien(id);
 			System.out.println("utttttttttttttttt" +sdmret);
 			ObjectOutputStream sortie=new ObjectOutputStream(response.getOutputStream());
 			sortie.writeObject(sdmret);

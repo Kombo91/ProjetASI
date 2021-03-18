@@ -25,6 +25,10 @@ public class GestionRencontre implements GestionRencontreRemote {
 	@Override
 	public Rencontre ajouterRencontre(Rencontre ren) {
 		em.persist(ren);
+		
+		Rencontre renc = (Rencontre) em.createQuery("SELECT re FROM Rencontre re WHERE re.idMonEquipe = '"+ren.getIdMonEquipe()+"' and re.idEquipeAdvers ='"+ ren.getIdEquipeAdvers()+"'").getSingleResult();
+
+		
 		return ren;
 	}
 

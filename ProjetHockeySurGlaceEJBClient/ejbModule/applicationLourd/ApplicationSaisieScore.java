@@ -335,8 +335,8 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	private void executerServlet()
 	{
 		String nomEquipe="real madrid";
-		idGardien = 5;
-		idRencontre = 2 ;
+		idGardien = 509;
+		idRencontre = 50 ;
 		
 		try
 		{
@@ -351,7 +351,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 
 			ObjectOutputStream fluxsortie = new ObjectOutputStream(connexion.getOutputStream());
 			System.out.println(" 111111");
-			ScoreDeMatch sdm = new ScoreDeMatch (idGardien,idRencontre,tire);
+			ScoreDeMatch sdm = new ScoreDeMatch (VariableStatique.getIdGardien(),VariableStatique.getIdRencontre(),tire);
 			System.out.println(" 111111");
 
 			fluxsortie.writeObject(sdm);

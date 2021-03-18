@@ -33,8 +33,9 @@ public class GestionEquipe implements GestionEquipeRemote {
 	}
 
 	@Override
-	public Collection<Equipe> listerEquipe() {
-		return em.createQuery("SELECT eq FROM Equipe eq").getResultList();
+	public Collection<Equipe> listerEquipe(int idMonEquipe) {
+		System.out.println("je suis la lister Equipe");
+		return em.createQuery("SELECT eq FROM Equipe eq WHERE eq.idEquipe !="+idMonEquipe).getResultList();
 
 	}
 

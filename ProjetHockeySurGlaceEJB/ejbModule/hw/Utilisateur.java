@@ -23,12 +23,13 @@ import javax.persistence.NamedQuery;
 public class Utilisateur implements Serializable  {
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO) 
-	private int id;
+	private int idUtilisateur;
 	private String nom;
 	private String prenom;
 	private String pseudo;
 	private String mots_de_passe;
 	private boolean est_connecte;
+	private int idEquipe;
 	
 	public Utilisateur() {
 		super();
@@ -47,11 +48,11 @@ public class Utilisateur implements Serializable  {
 		this.pseudo = pseudo;
 		this.nom = pwd;
 	}
-	public int getId() {
-		return id;
+	public int getIdUtilisateur() {
+		return idUtilisateur;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdUtilisateur(int idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
 	}
 	public String getNom() {
 		return nom;
@@ -79,7 +80,7 @@ public class Utilisateur implements Serializable  {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", identifiant=" + pseudo
+		return "User [id=" + idUtilisateur + ", identifiant=" + pseudo
 				+ ", password=" + mots_de_passe + "]";
 	}
 	public boolean isEst_connecte() {
@@ -87,6 +88,14 @@ public class Utilisateur implements Serializable  {
 	}
 	public void setEst_connecte(boolean est_connecte) {
 		this.est_connecte = est_connecte;
+	}
+
+	public int getIdEquipe() {
+		return idEquipe;
+	}
+
+	public void setIdEquipe(int idEquipe) {
+		this.idEquipe = idEquipe;
 	}
 	
 

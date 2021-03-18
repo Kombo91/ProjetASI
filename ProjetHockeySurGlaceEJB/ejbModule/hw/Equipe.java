@@ -4,6 +4,7 @@
 package hw;
 
 import java.io.Serializable;
+import java.text.MessageFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,9 +19,14 @@ import javax.persistence.Id;
 public class Equipe implements Serializable  {
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO) 
-	private int id;
+	private int idEquipe;
 	private String nomEquipe;
 	
+	public Equipe(int idEquipe, String nomEquipe) {
+		super();
+		this.idEquipe = idEquipe;
+		this.nomEquipe = nomEquipe;
+	}
 	public Equipe() {
 		super();
 	}
@@ -28,11 +34,11 @@ public class Equipe implements Serializable  {
 		super();
 		this.nomEquipe = nomEquipe;
 	}
-	public int getId() {
-		return id;
+	public int getIdEquipe() {
+		return idEquipe;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdEquipe(int idEquipe) {
+		this.idEquipe = idEquipe;
 	}
 	public String getNomEquipe() {
 		return nomEquipe;
@@ -40,5 +46,8 @@ public class Equipe implements Serializable  {
 	public void setNomEquipe(String nomEquipe) {
 		this.nomEquipe = nomEquipe;
 	}
-
+	 @Override
+     public String toString() {
+         return MessageFormat.format("{1}", getIdEquipe(),getNomEquipe());
+     }
 }

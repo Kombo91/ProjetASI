@@ -3,7 +3,6 @@ package managedBeans;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.util.Hashtable;
 
 import javax.naming.Context;
@@ -14,22 +13,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import hw.GestionRencontreRemote;
 import hw.GestionConnexionRemote;
-import hw.Rencontre;
-import hw.Utilisateur;
+
 /**
- * Servlet implementation class ServletChoixDuMatch
+ * Servlet implementation class ServletUtilisateurDeconnecte
  */
-@WebServlet("/choixDuMatch")
-public class ServletChoixDuMatch extends HttpServlet {
+@WebServlet("/utilisateurDeconnecte")
+public class ServletUtilisateurDeconnecte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletChoixDuMatch() {
+    public ServletUtilisateurDeconnecte() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,43 +35,35 @@ public class ServletChoixDuMatch extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	PrintWriter out=null;
-    	response.setContentType("text/html");
-    	out=response.getWriter();
-    	out.println("<html>");
-    	out.println("<head><title>Test de servlet</title></head>");
-    	out.println("<body>");
-    	out.println("Affichage de contenu de la Servlet choix Du Match");
-    	out.println("</body>");
-    	out.println("</html>");
-    }
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		GestionRencontreRemote gestionEquipe=null; 
+    	GestionConnexionRemote gestionEquipe=null; 
     	final Hashtable jndiProperties = new Hashtable();
 		jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
 		Context context=null;	
 		
 		try {
 			context = new InitialContext(jndiProperties);
-			gestionEquipe = EjbLocator.getLocator().getGestionRencontre();
-			System.out.println("utttttttttttttttt");
+			gestionEquipe = EjbLocator.getLocator().getGestionConnexion();
+
 		} catch (NamingException e1) {
 			e1.printStackTrace();
 		}
     	
 		try {
-			System.out.println("utttttttttttttttt");
 			ObjectInputStream entree=new ObjectInputStream(request.getInputStream());
-			Rencontre  renc=(Rencontre)entree.readObject();
-			Rencontre ren = gestionEquipe.ajouterRencontre(renc);
-			System.out.println("utttttttttttttttt");
+			int  id=(int) entree.readObject();
+			gestionEquipe.deconnexion(id);
+			
 			ObjectOutputStream sortie=new ObjectOutputStream(response.getOutputStream());
-			sortie.writeObject(ren);
+			sortie.writeObject(id);
 
 		} catch (Exception e) {
 			e.printStackTrace();
