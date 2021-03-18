@@ -18,6 +18,9 @@ import hw.Gardien;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,6 +103,7 @@ public class ChoixDuMatch extends JFrame {
 		contentPane.add(listeGardienJlist);
 		List<Gardien> listGardien= conAuxServ.recupererToutLesGardiens(VariableStatique.getIdMonEquipe());
 		
+		List<Gardien> cloned_list= new ArrayList<Gardien>(listGardien);
 		for (Gardien gard : listGardien){
 			modelListeGardien.addElement(new Gardien(gard.getIdGardien(),gard.getNom()));
 		}
@@ -170,6 +174,16 @@ public class ChoixDuMatch extends JFrame {
 		pasDequipe.setForeground(Color.RED);
 		pasDequipe.setBounds(250, 205, 200, 14);
 		contentPane.add(pasDequipe);
+		
+		addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+            	System.out.println("aaaaaaaaaaa je ne suis pass nul" );	
+
+				conAuxServ.deconnecte(VariableStatique.getIdUtilisteur());
+				dispose();
+            }
+        });
+		
 
 	}
 }

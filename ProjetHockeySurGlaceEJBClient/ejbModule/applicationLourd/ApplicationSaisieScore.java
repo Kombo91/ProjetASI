@@ -7,6 +7,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
@@ -65,6 +67,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	
 	private int idGardien;
 	private int idRencontre;
+	private JTextField txtZoneDeGardien;
 	
 	public int getIdGardien() {
 		return idGardien;
@@ -78,6 +81,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	public void setIdRencontre(int idRencontre) {
 		this.idRencontre = idRencontre;
 	}
+	ConnexionAuxServlet conAuxServ = new ConnexionAuxServlet();
 
 	/**
 	 * Launch the application.
@@ -105,7 +109,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	 */
 	public ApplicationSaisieScore() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 507, 357);
+		setBounds(100, 100, 579, 370);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -115,16 +119,17 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		/////// JPanel terain
 		terrain1 = new JPanel();
 		terrain1.setBackground(Color.PINK);
-		terrain1.setBounds(10, 45, 50, 50);
+		terrain1.setBounds(32, 45, 60, 60);
 		terrain1.addMouseListener(this);
 		JLabel texteterrain1 = new JLabel("1");
+		texteterrain1.setVerticalAlignment(SwingConstants.BOTTOM);
 		texteterrain1.setFont(new Font("Verdana",1,20));
 	    terrain1.add(texteterrain1);
 		contentPane.add(terrain1);
 		
 		terrain2 = new JPanel();
 		terrain2.setBackground(Color.PINK);
-		terrain2.setBounds(70, 45, 50, 50);
+		terrain2.setBounds(102, 45, 60, 60);
 		terrain2.addMouseListener(this);
 		JLabel texteterrain2 = new JLabel("2");
 		texteterrain2.setFont(new Font("Verdana",1,20));
@@ -133,7 +138,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		terrain3 = new JPanel();
 		terrain3.setBackground(Color.PINK);
-		terrain3.setBounds(10, 106, 50, 50);
+		terrain3.setBounds(32, 116, 60, 60);
 		terrain3.addMouseListener(this);
 		JLabel texteterrain3 = new JLabel("3");
 		texteterrain3.setFont(new Font("Verdana",1,20));
@@ -142,7 +147,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		terrain4 = new JPanel();
 		terrain4.setBackground(Color.PINK);
-		terrain4.setBounds(70, 106, 50, 50);
+		terrain4.setBounds(102, 116, 60, 60);
 		terrain4.addMouseListener(this);
 		JLabel texteterrain4 = new JLabel("4");
 		texteterrain4.setFont(new Font("Verdana",1,20));
@@ -151,7 +156,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		terrain5 = new JPanel();
 		terrain5.setBackground(Color.PINK);
-		terrain5.setBounds(10, 167, 50, 50);
+		terrain5.setBounds(32, 187, 60, 60);
 		terrain5.addMouseListener(this);
 		JLabel texteterrain5 = new JLabel("5");
 		texteterrain5.setFont(new Font("Verdana",1,20));
@@ -160,7 +165,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 	    terrain6 = new JPanel();
 	    terrain6.setBackground(Color.PINK);
-	    terrain6.setBounds(70, 167, 50, 50);
+	    terrain6.setBounds(102, 187, 60, 60);
 		terrain6.addMouseListener(this);
 		JLabel texteterrain6 = new JLabel("6");
 		texteterrain6.setFont(new Font("Verdana",1,20));
@@ -171,7 +176,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageA = new JPanel();
 		cageA.setBackground(Color.PINK);
-		cageA.setBounds(170, 45, 50, 50);
+		cageA.setBounds(220, 45, 60, 60);
 		cageA.addMouseListener(this);
 		JLabel texteCageA = new JLabel("A");
 		texteCageA.setFont(new Font("Verdana",1,20));
@@ -180,7 +185,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageB = new JPanel();
 		cageB.setBackground(Color.PINK);
-		cageB.setBounds(230, 45, 50, 50);
+		cageB.setBounds(290, 45, 60, 60);
 		cageB.addMouseListener(this);
 		JLabel texteCageB= new JLabel("B");
 		texteCageB.setFont(new Font("Verdana",1,20));
@@ -189,7 +194,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageC = new JPanel();
 		cageC.setBackground(Color.PINK);
-		cageC.setBounds(290, 45, 50, 50);
+		cageC.setBounds(360, 45, 60, 60);
 		cageC.addMouseListener(this);
 		JLabel texteCageC = new JLabel("C");
 		texteCageC.setFont(new Font("Verdana",1,20));
@@ -198,7 +203,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageD = new JPanel();
 		cageD.setBackground(Color.PINK);
-		cageD.setBounds(170, 106, 50, 50);
+		cageD.setBounds(220, 116, 60, 60);
 		cageD.addMouseListener(this);
 		JLabel texteCageD = new JLabel("D");
 		texteCageD.setFont(new Font("Verdana",1,20));
@@ -207,7 +212,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageE = new JPanel();
 		cageE.setBackground(Color.PINK);
-		cageE.setBounds(230, 106, 50, 50);
+		cageE.setBounds(290, 116, 60, 60);
 		cageE.addMouseListener(this);
 		JLabel texteCageE = new JLabel("E");
 		texteCageE.setFont(new Font("Verdana",1,20));
@@ -216,7 +221,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageF = new JPanel();
 		cageF.setBackground(Color.PINK);
-		cageF.setBounds(290, 106, 50, 50);
+		cageF.setBounds(360, 116, 60, 60);
 		cageF.addMouseListener(this);
 		JLabel texteCageF = new JLabel("F");
 		texteCageF.setFont(new Font("Verdana",1,20));
@@ -225,7 +230,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageG = new JPanel();
 		cageG.setBackground(Color.PINK);
-		cageG.setBounds(170, 167, 50, 50);
+		cageG.setBounds(220, 187, 60, 60);
 		cageG.addMouseListener(this);
 		JLabel texteCageG = new JLabel("G");
 		texteCageG.setFont(new Font("Verdana",1,20));
@@ -234,7 +239,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageH = new JPanel();
 		cageH.setBackground(Color.PINK);
-		cageH.setBounds(230, 167, 50, 50);
+		cageH.setBounds(290, 187, 60, 60);
 		cageH.addMouseListener(this);
 		JLabel textecageH = new JLabel("H");
 		textecageH.setFont(new Font("Verdana",1,20));
@@ -243,7 +248,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		
 		cageI = new JPanel();
 		cageI.setBackground(Color.PINK);
-		cageI.setBounds(290, 167, 50, 50);
+		cageI.setBounds(360, 187, 60, 60);
 		cageI.addMouseListener(this);
 		JLabel texteCageI = new JLabel("I");
 		texteCageI.setFont(new Font("Verdana",1,20));
@@ -277,7 +282,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 			}
 		});
 		But.setBackground(Color.RED);
-		But.setBounds(391, 81, 80, 40);
+		But.setBounds(466, 85, 80, 40);
 		contentPane.add(But);
 		
 		PasBut = new JButton("Pas but");
@@ -297,12 +302,27 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 					zoneCage = "";
 					zoneterrain = "";
 					executerServlet();
+					terrain1.setBackground(Color.PINK);
+			           terrain2.setBackground(Color.PINK);
+			           terrain3.setBackground(Color.PINK);
+			           terrain4.setBackground(Color.PINK);
+			           terrain5.setBackground(Color.PINK);
+			           terrain6.setBackground(Color.PINK);
+			           cageA.setBackground(Color.PINK);
+			           cageB.setBackground(Color.PINK);
+			           cageC.setBackground(Color.PINK);
+			           cageD.setBackground(Color.PINK);
+			           cageE.setBackground(Color.PINK);
+			           cageF.setBackground(Color.PINK);
+			           cageG.setBackground(Color.PINK);
+			           cageH.setBackground(Color.PINK);
+			           cageI.setBackground(Color.PINK);
 				}
 				
 			}
 		});
 		PasBut.setBackground(Color.GREEN);
-		PasBut.setBounds(391, 132, 80, 40);
+		PasBut.setBounds(466, 163, 80, 40);
 		contentPane.add(PasBut);
 		
 		finDeMatch = new JButton("Fin de match");
@@ -313,12 +333,12 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 				System.exit(0);
 			}
 		});
-		finDeMatch.setBounds(366, 267, 115, 40);
+		finDeMatch.setBounds(431, 280, 115, 40);
 		contentPane.add(finDeMatch);
 		
 		JEditorPane editorPane = new JEditorPane();
 		editorPane.setBackground(Color.YELLOW);
-		editorPane.setBounds(0, 32, 132, 201);
+		editorPane.setBounds(20, 32, 155, 231);
 		contentPane.add(editorPane);
 		
 		txtZoneDeTire = new JTextField();
@@ -327,9 +347,59 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		txtZoneDeTire.setHorizontalAlignment(SwingConstants.CENTER);
 		txtZoneDeTire.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		txtZoneDeTire.setText("Zone de tire");
-		txtZoneDeTire.setBounds(22, 11, 86, 20);
+		txtZoneDeTire.setBounds(49, 11, 86, 20);
 		contentPane.add(txtZoneDeTire);
 		txtZoneDeTire.setColumns(10);
+		
+		JEditorPane editorPane_1 = new JEditorPane();
+		editorPane_1.setBackground(Color.YELLOW);
+		editorPane_1.setBounds(209, 32, 224, 231);
+		contentPane.add(editorPane_1);
+		
+		JButton changementGardien = new JButton("Changement du gardien");
+		changementGardien.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				new ChangerGardien().setVisible(true);
+			}
+		});
+		changementGardien.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		changementGardien.setBackground(Color.BLUE);
+		changementGardien.setBounds(209, 280, 180, 40);
+		contentPane.add(changementGardien);
+		
+		JButton deconnexion = new JButton("D\u00E9connexion");
+		deconnexion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("aaaaaaaaaaa je ne suis pass nul" );	
+
+				conAuxServ.deconnecte(VariableStatique.getIdUtilisteur());
+				dispose();
+				new Connexion().setVisible(true);
+			}
+		});
+		deconnexion.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		deconnexion.setBackground(Color.BLUE);
+		deconnexion.setBounds(20, 280, 115, 40);
+		contentPane.add(deconnexion);
+		
+		txtZoneDeGardien = new JTextField();
+		txtZoneDeGardien.setText("Zone de gardien");
+		txtZoneDeGardien.setHorizontalAlignment(SwingConstants.CENTER);
+		txtZoneDeGardien.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		txtZoneDeGardien.setEditable(false);
+		txtZoneDeGardien.setColumns(10);
+		txtZoneDeGardien.setBackground(Color.YELLOW);
+		txtZoneDeGardien.setBounds(264, 11, 106, 20);
+		contentPane.add(txtZoneDeGardien);
+		addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+            	System.out.println("aaaaaaaaaaa je ne suis pass nul" );	
+
+				conAuxServ.deconnecte(VariableStatique.getIdUtilisteur());
+				dispose();
+            }
+        });
 		
 	}
 	private void executerServlet()
@@ -381,36 +451,78 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	           System.out.println("terrain 1");
 	           zoneterrain="terrain1";
 	           System.out.println(zoneterrain);
+	           terrain1.setBackground(Color.blue);
+	           terrain2.setBackground(Color.PINK);
+	           terrain3.setBackground(Color.PINK);
+	           terrain4.setBackground(Color.PINK);
+	           terrain5.setBackground(Color.PINK);
+	           terrain6.setBackground(Color.PINK);
+	           
 	           
 	        }
 		if (e.getSource() == terrain2) {
 	           System.out.println("terrain 2");
 	           zoneterrain="terrain2";
 	           System.out.println(zoneterrain);
+	           terrain1.setBackground(Color.PINK);
+	           terrain2.setBackground(Color.blue);
+	           terrain3.setBackground(Color.PINK);
+	           terrain4.setBackground(Color.PINK);
+	           terrain5.setBackground(Color.PINK);
+	           terrain6.setBackground(Color.PINK);
+
 
 	        }
 		if (e.getSource() == terrain3) {
 	           System.out.println("terrain 3");
 	           zoneterrain="terrain3";
 	           System.out.println(zoneterrain);
+	           terrain1.setBackground(Color.PINK);
+	           terrain2.setBackground(Color.PINK);
+	           terrain3.setBackground(Color.blue);
+	           terrain4.setBackground(Color.PINK);
+	           terrain5.setBackground(Color.PINK);
+	           terrain6.setBackground(Color.PINK);
+
 
 	        }
 		if (e.getSource() == terrain4) {
 	           System.out.println("terrain 4");
 	           zoneterrain="terrain4";
 	           System.out.println(zoneterrain);
+	           terrain1.setBackground(Color.PINK);
+	           terrain2.setBackground(Color.PINK);
+	           terrain3.setBackground(Color.PINK);
+	           terrain4.setBackground(Color.blue);
+	           terrain5.setBackground(Color.PINK);
+	           terrain6.setBackground(Color.PINK);
+
 
 	        }
 		if (e.getSource() == terrain5) {
 	           System.out.println("terrain 5");
 	           zoneterrain="terrain5";
 	           System.out.println(zoneterrain);
+	           terrain1.setBackground(Color.PINK);
+	           terrain2.setBackground(Color.PINK);
+	           terrain3.setBackground(Color.PINK);
+	           terrain4.setBackground(Color.PINK);
+	           terrain5.setBackground(Color.blue);
+	           terrain6.setBackground(Color.PINK);
+
 
 	        }
 		if (e.getSource() == terrain6) {
 	           System.out.println("terrain 6");
 	           zoneterrain="terrain6";
 	           System.out.println(zoneterrain);
+	           terrain1.setBackground(Color.PINK);
+	           terrain2.setBackground(Color.PINK);
+	           terrain3.setBackground(Color.PINK);
+	           terrain4.setBackground(Color.PINK);
+	           terrain5.setBackground(Color.PINK);
+	           terrain6.setBackground(Color.blue);
+
 
 	        }
 		
@@ -419,46 +531,127 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	           System.out.println("cage A");
 	           zoneCage="CageA";
 	           System.out.println(zoneCage);
+	           cageA.setBackground(Color.ORANGE);
+	           cageB.setBackground(Color.PINK);
+	           cageC.setBackground(Color.PINK);
+	           cageD.setBackground(Color.PINK);
+	           cageE.setBackground(Color.PINK);
+	           cageF.setBackground(Color.PINK);
+	           cageG.setBackground(Color.PINK);
+	           cageH.setBackground(Color.PINK);
+	           cageI.setBackground(Color.PINK);
 	        }
 		if (e.getSource() == cageB) {
 	           System.out.println("cage B");
 	           zoneCage="CageB";
 	           System.out.println(zoneCage);
+	           cageA.setBackground(Color.PINK);
+	           cageB.setBackground(Color.ORANGE);
+	           cageC.setBackground(Color.PINK);
+	           cageD.setBackground(Color.PINK);
+	           cageE.setBackground(Color.PINK);
+	           cageF.setBackground(Color.PINK);
+	           cageG.setBackground(Color.PINK);
+	           cageH.setBackground(Color.PINK);
+	           cageI.setBackground(Color.PINK);
            }
 		if (e.getSource() == cageC) {
 	           System.out.println("cage C");
 	           zoneCage="CageC";
 	           System.out.println(zoneCage);
+	           cageA.setBackground(Color.PINK);
+	           cageB.setBackground(Color.PINK);
+	           cageC.setBackground(Color.ORANGE);
+	           cageD.setBackground(Color.PINK);
+	           cageE.setBackground(Color.PINK);
+	           cageF.setBackground(Color.PINK);
+	           cageG.setBackground(Color.PINK);
+	           cageH.setBackground(Color.PINK);
+	           cageI.setBackground(Color.PINK);
 			}
 		if (e.getSource() == cageD) {
 	           System.out.println("cage D");
 	           zoneCage="CageD";
 	           System.out.println(zoneCage);
+	           cageA.setBackground(Color.PINK);
+	           cageB.setBackground(Color.PINK);
+	           cageC.setBackground(Color.PINK);
+	           cageD.setBackground(Color.ORANGE);
+	           cageE.setBackground(Color.PINK);
+	           cageF.setBackground(Color.PINK);
+	           cageG.setBackground(Color.PINK);
+	           cageH.setBackground(Color.PINK);
+	           cageI.setBackground(Color.PINK);
 	        }
 		if (e.getSource() == cageE) {
 	           System.out.println("cage E");
 	           zoneCage="CageE";
 	           System.out.println(zoneCage);
+	           cageA.setBackground(Color.PINK);
+	           cageB.setBackground(Color.PINK);
+	           cageC.setBackground(Color.PINK);
+	           cageD.setBackground(Color.PINK);
+	           cageE.setBackground(Color.ORANGE);
+	           cageF.setBackground(Color.PINK);
+	           cageG.setBackground(Color.PINK);
+	           cageH.setBackground(Color.PINK);
+	           cageI.setBackground(Color.PINK);
 	        }
 		if (e.getSource() == cageF) {
 	           System.out.println("cage F");
 	           zoneCage="CageF";
 	           System.out.println(zoneCage);
+	           cageA.setBackground(Color.PINK);
+	           cageB.setBackground(Color.PINK);
+	           cageC.setBackground(Color.PINK);
+	           cageD.setBackground(Color.PINK);
+	           cageE.setBackground(Color.PINK);
+	           cageF.setBackground(Color.ORANGE);
+	           cageG.setBackground(Color.PINK);
+	           cageH.setBackground(Color.PINK);
+	           cageI.setBackground(Color.PINK);
 	        }
 		if (e.getSource() == cageG) {
 	           System.out.println("cage G");
 	           zoneCage="CageG";
 	           System.out.println(zoneCage);
+	           cageA.setBackground(Color.PINK);
+	           cageB.setBackground(Color.PINK);
+	           cageC.setBackground(Color.PINK);
+	           cageD.setBackground(Color.PINK);
+	           cageE.setBackground(Color.PINK);
+	           cageF.setBackground(Color.PINK);
+	           cageG.setBackground(Color.ORANGE);
+	           cageH.setBackground(Color.PINK);
+	           cageI.setBackground(Color.PINK);
 	        }
 		if (e.getSource() == cageH) {
 	           System.out.println("cage H");
 	           zoneCage="CageH";
 	           System.out.println(zoneCage);
+	           cageA.setBackground(Color.PINK);
+	           cageB.setBackground(Color.PINK);
+	           cageC.setBackground(Color.PINK);
+	           cageD.setBackground(Color.PINK);
+	           cageE.setBackground(Color.PINK);
+	           cageF.setBackground(Color.PINK);
+	           cageG.setBackground(Color.PINK);
+	           cageH.setBackground(Color.ORANGE);
+	           cageI.setBackground(Color.PINK);
 	        }
 		if (e.getSource() == cageI) {
 	           System.out.println("cage I");
 	           zoneCage="CageI";
 	           System.out.println(zoneCage);
+	           cageA.setBackground(Color.PINK);
+	           cageB.setBackground(Color.PINK);
+	           cageC.setBackground(Color.PINK);
+	           cageD.setBackground(Color.PINK);
+	           cageE.setBackground(Color.PINK);
+	           cageF.setBackground(Color.PINK);
+	           cageG.setBackground(Color.PINK);
+	           cageH.setBackground(Color.PINK);
+	           cageI.setBackground(Color.ORANGE);
 	        }
 		
 		

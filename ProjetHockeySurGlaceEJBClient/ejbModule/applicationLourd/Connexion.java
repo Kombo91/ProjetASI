@@ -44,6 +44,7 @@ public class Connexion extends JFrame {
 				try {
 					Connexion frame = new Connexion();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
