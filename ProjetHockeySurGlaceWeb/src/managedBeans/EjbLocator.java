@@ -22,60 +22,49 @@ import hw.GestionScoreDeMatchRemote;
 public class EjbLocator {
 	private static Context ctx;
 	private static EjbLocator instance = new EjbLocator();
+
 	private EjbLocator() {
 	}
+
 	public static EjbLocator getLocator() {
 		return instance;
 	}
 
 	private <T> T getEjb(Class<T> ejbClass, String beanName) {
-		System.out.println("ejbClass -> "+ejbClass);
-		System.out.println("beanName -> "+beanName);
-		System.out.println("blablablablabla");
 		try {
 			final Hashtable jndiProperties = new Hashtable();
 			jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
 			final Context context = new InitialContext(jndiProperties);
 			final String appName = "ProjetHockeySurGlaceEAR";
-			System.out.println("appName -> "+appName);
 			final String moduleName = "ProjetHockeySurGlaceEJB";
+			return (T) context
+					.lookup("java:global/" + appName + "/" + moduleName + "/" + beanName + "!" + ejbClass.getName());
 
-			System.out.println("moduleName -> "+moduleName);
-			System.out.println("java:global/" + appName + "/" + moduleName + "/" + beanName + "!" + ejbClass.getName());
-			System.out.println("----> "+(T) context.lookup("java:global/" + appName + "/" + moduleName + "/" + beanName + "!" + ejbClass.getName()));
-			return (T) context.lookup("java:global/" + appName + "/" + moduleName + "/" + beanName + "!" + ejbClass.getName());
-			
 		} catch (NamingException e) {
-			System.out.println(e.getMessage());
 			return null;
 		}
-	}	
+	}
+
 	public GestionEquipeRemote getGestionEquipe() {
-		System.out.println("je suis dans le EjbLocator");
 
 		return getEjb(GestionEquipeRemote.class, "GestionEquipe");
 	}
-	public GestionScoreDeMatchRemote getGestionScoreDeMatch() {
-		System.out.println("je suis dans le EjbLocator");
 
+	public GestionScoreDeMatchRemote getGestionScoreDeMatch() {
 		return getEjb(GestionScoreDeMatchRemote.class, "GestionScoreDeMatch");
 	}
-	public GestionConnexionRemote getGestionConnexion() {
-		System.out.println("je suis dans le EjbLocator");
 
+	public GestionConnexionRemote getGestionConnexion() {
 		return getEjb(GestionConnexionRemote.class, "GestionConnexion");
 	}
-	public GestionRencontreRemote getGestionRencontre() {
-		System.out.println("je suis dans le EjbLocator");
 
+	public GestionRencontreRemote getGestionRencontre() {
 		return getEjb(GestionRencontreRemote.class, "GestionRencontre");
 	}
-	public GestionGardienRemote getGestionGardien() {
-		System.out.println("je suis dans le EjbLocator");
 
+	public GestionGardienRemote getGestionGardien() {
 		return getEjb(GestionGardienRemote.class, "GestionGardien");
 	}
-	
-// Rajouter ici une méthode pour tout nouvel EJB auquel on souhaite accéder
-	}
 
+// Rajouter ici une méthode pour tout nouvel EJB auquel on souhaite accéder
+}

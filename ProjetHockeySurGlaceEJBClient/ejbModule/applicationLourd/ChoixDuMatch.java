@@ -72,6 +72,9 @@ public class ChoixDuMatch extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		List<Gardien> listGardien= conAuxServ.recupererToutLesGardiens(VariableStatique.getIdMonEquipe());
+		List<Gardien> cloned_list= new ArrayList<Gardien>();
+		
 		JButton demarrerMatch = new JButton("Demarrer Match");
 		demarrerMatch.setHorizontalAlignment(SwingConstants.LEADING);
 		demarrerMatch.addActionListener(new ActionListener() {
@@ -89,6 +92,16 @@ public class ChoixDuMatch extends JFrame {
 				VariableStatique.setIdRencontre(getIdRencontre.getIdRencontre());
 				
 				conAuxServ.ajouterScoreDuMatch(VariableStatique.getIdGardien(),VariableStatique.getIdRencontre());
+				
+				for(Gardien gd : listGardien) {
+					if(VariableStatique.getIdGardien() != gd.getIdGardien()) {
+						cloned_list.add(gd);
+					}
+				}
+				
+				VariableStatique.setListGardienEntrant(cloned_list);
+				
+				
 				dispose();
 				new ApplicationSaisieScore().setVisible(true); 
 			}
@@ -100,9 +113,7 @@ public class ChoixDuMatch extends JFrame {
 		JList listeGardienJlist = new JList(modelListeGardien);
 		listeGardienJlist.setBounds(20, 50, 200, 144);
 		contentPane.add(listeGardienJlist);
-		List<Gardien> listGardien= conAuxServ.recupererToutLesGardiens(VariableStatique.getIdMonEquipe());
 		
-		List<Gardien> cloned_list= new ArrayList<Gardien>(listGardien);
 		for (Gardien gard : listGardien){
 			modelListeGardien.addElement(new Gardien(gard.getIdGardien(),gard.getNom()));
 		}

@@ -62,18 +62,14 @@ public class ServletUtilisateurConnecte extends HttpServlet {
 			ObjectInputStream entree=new ObjectInputStream(request.getInputStream());
 			int  id=(int) entree.readObject();
 			gestionEquipe.connexion(id);
-			HttpSession session = request.getSession();
-
-	        session.setAttribute("nom", id);
-			ObjectOutputStream sortie=new ObjectOutputStream(response.getOutputStream());
+		ObjectOutputStream sortie=new ObjectOutputStream(response.getOutputStream());
 			sortie.writeObject(id);
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
-    }
-
-
+	}
 
 }

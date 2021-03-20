@@ -26,39 +26,43 @@ import hw.ScoreDeMatch;
 @WebServlet("/ScoreDeMatch")
 public class ServletScoreDeMatch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletScoreDeMatch() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	PrintWriter out=null;
-    	response.setContentType("text/html");
-    	out=response.getWriter();
-    	out.println("<html>");
-    	out.println("<head><title>Test de servlet</title></head>");
-    	out.println("<body>");
-    	out.println("Affichage de contenu de la Servlet Score De Match");
-    	out.println("</body>");
-    	out.println("</html>");
-    }
+	public ServletScoreDeMatch() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	GestionScoreDeMatchRemote gestionScoreDeMatchRemote=null; 
-    	final Hashtable jndiProperties = new Hashtable();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PrintWriter out = null;
+		response.setContentType("text/html");
+		out = response.getWriter();
+		out.println("<html>");
+		out.println("<head><title>Test de servlet</title></head>");
+		out.println("<body>");
+		out.println("Affichage de contenu de la Servlet Score De Match");
+		out.println("</body>");
+		out.println("</html>");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		GestionScoreDeMatchRemote gestionScoreDeMatchRemote = null;
+		final Hashtable jndiProperties = new Hashtable();
 		jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-		Context context=null;	
-		
+		Context context = null;
+
 		try {
 			context = new InitialContext(jndiProperties);
 			gestionScoreDeMatchRemote = EjbLocator.getLocator().getGestionScoreDeMatch();
@@ -66,18 +70,17 @@ public class ServletScoreDeMatch extends HttpServlet {
 		} catch (NamingException e1) {
 			e1.printStackTrace();
 		}
-    	
+
 		try {
-			ObjectInputStream entree=new ObjectInputStream(request.getInputStream());
-			ScoreDeMatch sdm =(ScoreDeMatch)entree.readObject();
-			System.err.println("sdm"+sdm);
+			ObjectInputStream entree = new ObjectInputStream(request.getInputStream());
+			ScoreDeMatch sdm = (ScoreDeMatch) entree.readObject();
 			gestionScoreDeMatchRemote.modifierScoreDeMatch(sdm);
-			ObjectOutputStream sortie=new ObjectOutputStream(response.getOutputStream());
+			ObjectOutputStream sortie = new ObjectOutputStream(response.getOutputStream());
 			sortie.writeObject(sdm);
 
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-    }
+	}
 
 }

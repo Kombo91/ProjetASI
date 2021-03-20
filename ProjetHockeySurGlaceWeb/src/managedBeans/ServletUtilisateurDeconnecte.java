@@ -23,32 +23,36 @@ import hw.GestionConnexionRemote;
 @WebServlet("/utilisateurDeconnecte")
 public class ServletUtilisateurDeconnecte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletUtilisateurDeconnecte() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ServletUtilisateurDeconnecte() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	GestionConnexionRemote gestionEquipe=null; 
-    	final Hashtable jndiProperties = new Hashtable();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		GestionConnexionRemote gestionEquipe = null;
+		final Hashtable jndiProperties = new Hashtable();
 		jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-		Context context=null;	
-		
+		Context context = null;
+
 		try {
 			context = new InitialContext(jndiProperties);
 			gestionEquipe = EjbLocator.getLocator().getGestionConnexion();
@@ -56,20 +60,19 @@ public class ServletUtilisateurDeconnecte extends HttpServlet {
 		} catch (NamingException e1) {
 			e1.printStackTrace();
 		}
-    	
+
 		try {
-			ObjectInputStream entree=new ObjectInputStream(request.getInputStream());
-			int  id=(int) entree.readObject();
+			ObjectInputStream entree = new ObjectInputStream(request.getInputStream());
+			int id = (int) entree.readObject();
 			gestionEquipe.deconnexion(id);
-			
-			ObjectOutputStream sortie=new ObjectOutputStream(response.getOutputStream());
+
+			ObjectOutputStream sortie = new ObjectOutputStream(response.getOutputStream());
 			sortie.writeObject(id);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
-    }
-
+	}
 
 }

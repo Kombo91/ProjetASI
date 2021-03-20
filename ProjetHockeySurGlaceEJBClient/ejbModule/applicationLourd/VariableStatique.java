@@ -3,6 +3,10 @@
  */
 package applicationLourd;
 
+import java.util.List;
+
+import hw.Gardien;
+
 /**
  * @author KP
  *
@@ -15,6 +19,7 @@ public class VariableStatique {
 	private static int idRencontre;
 	private static int idMonEquipe;
 	private static int idEquipeAdvers;
+	private static List<Gardien> listGardienEntrant;
 	
 	public static boolean isChoixDuMatchInOpen() {
 		return choixDuMatchInOpen;
@@ -57,6 +62,12 @@ public class VariableStatique {
 	}
 	public static void setIdEquipeAdvers(int idEquipeAdvers) {
 		VariableStatique.idEquipeAdvers = idEquipeAdvers;
+	}
+	public static List<Gardien> getListGardienEntrant() {
+		return listGardienEntrant;
+	}
+	public static void setListGardienEntrant(List<Gardien> listGardienEntrant) {
+		VariableStatique.listGardienEntrant = listGardienEntrant;
 	}
 	
 

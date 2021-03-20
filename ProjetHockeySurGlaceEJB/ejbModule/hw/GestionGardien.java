@@ -15,17 +15,17 @@ import javax.persistence.PersistenceContext;
 public class GestionGardien implements GestionGardienRemote {
 	@PersistenceContext
 	EntityManager em;
-    /**
-     * Default constructor. 
-     */
-    public GestionGardien() {
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * Default constructor.
+	 */
+	public GestionGardien() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public Collection<Gardien> listerGardien(int idMonEquipe) {
-		System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-		return em.createQuery("SELECT gr FROM Gardien gr WHERE gr.idEquipe = "+idMonEquipe).getResultList();
+		return em.createQuery("SELECT gr FROM Gardien gr WHERE gr.idEquipe = " + idMonEquipe).getResultList();
 
 	}
 

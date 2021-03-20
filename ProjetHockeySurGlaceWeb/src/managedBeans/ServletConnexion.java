@@ -71,7 +71,6 @@ public class ServletConnexion extends HttpServlet {
 			ObjectInputStream entree=new ObjectInputStream(request.getInputStream());
 			Utilisateur  eq=(Utilisateur)entree.readObject();
 			Utilisateur ut = gestionEquipe.connexion(eq);
-			System.out.println("utttttttttttttttt" +ut);
 			ObjectOutputStream sortie=new ObjectOutputStream(response.getOutputStream());
 			sortie.writeObject(ut);
 
