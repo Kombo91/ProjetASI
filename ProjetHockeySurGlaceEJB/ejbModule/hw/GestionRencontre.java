@@ -26,10 +26,9 @@ public class GestionRencontre implements GestionRencontreRemote {
 	public Rencontre ajouterRencontre(Rencontre ren) {
 		em.persist(ren);
 		
-		Rencontre renc = (Rencontre) em.createQuery("SELECT re FROM Rencontre re WHERE re.idMonEquipe = '"+ren.getIdMonEquipe()+"' and re.idEquipeAdvers ='"+ ren.getIdEquipeAdvers()+"'").getSingleResult();
-		ScoreDeMatch sdm = new ScoreDeMatch();
-		em.persist(sdm);
-		return renc;
+		em.flush();
+		System.out.println("GestionRencontre.ajouterRencontre()" + ren.getIdRencontre());
+		return ren;
 	}
 
 	@Override

@@ -5,10 +5,6 @@ package applicationLourd;
 
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.URL;
-import java.net.URLConnection;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,7 +16,6 @@ import hw.Utilisateur;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import java.awt.Color;
 /**
@@ -82,29 +77,24 @@ public class Connexion extends JFrame {
 		connexionButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Utilisateur util = conAuxServ.connexion(pseudo.getText(),pwd.getText());
-				System.out.println("util "+util);
+				
+				
 				 
 
 				if (util.getPseudo() != null) {
 					if (!util.isEst_connecte()) {
-						System.out.println("aaaaaaaaaaa je ne suis pass nul" );
 						conAuxServ.connecte(util.getIdUtilisateur());
 						VariableStatique.setChoixDuMatchInOpen(true);
 						VariableStatique.setIdUtilisteur(util.getIdUtilisateur());
 						VariableStatique.setIdMonEquipe(util.getIdEquipe());
 						dispose();
-						new ChoixDuMatch().setVisible(true);
-						//System.out.println("session "+sessionScope.prenom);
+						new ChoixDuMatch().setVisible(true);						
 					}
 					else {
-						System.out.println("aaaaaaaaaaa je suis nul");
 						msgErreur.setText("Un autre utilisateur est connecté avec les mêmes coordonnées");
 					}
-					
-
 				}
 				else {
-					System.out.println("aaaaaaaaaaa je suis nul");
 					msgErreur.setText("Pseudo ou Mot de passe incorrect");
 				}
 			}

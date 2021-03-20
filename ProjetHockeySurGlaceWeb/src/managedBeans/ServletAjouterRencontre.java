@@ -75,7 +75,7 @@ public class ServletAjouterRencontre extends HttpServlet {
 			ObjectInputStream entree=new ObjectInputStream(request.getInputStream());
 			Rencontre  sdm=(Rencontre)entree.readObject();
 			Rencontre rcd = gestionEquipe.ajouterRencontre(sdm);
-			System.out.println("utttttttttttttttt" +rcd);
+			System.out.println("utttttttttttttttt" +rcd.getIdRencontre());
 			ObjectOutputStream sortie=new ObjectOutputStream(response.getOutputStream());
 			sortie.writeObject(rcd);
 

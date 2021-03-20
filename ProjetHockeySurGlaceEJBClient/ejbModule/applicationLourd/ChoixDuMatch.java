@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionListener;
 
 import hw.Equipe;
 import hw.Gardien;
+import hw.Rencontre;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -21,9 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
@@ -48,12 +47,12 @@ public class ChoixDuMatch extends JFrame {
 			public void run() {
 				try {
 					ChoixDuMatch frame= new ChoixDuMatch();
-					//if(VariableStatique.isChoixDuMatchInOpen()) {
+					if(VariableStatique.isChoixDuMatchInOpen()) {
 						frame.setVisible(true);
-					////}
-					//else {
-					//	new PasDAcces().setVisible(true);
-					//}
+					}
+					else {
+						new PasDAcces().setVisible(true);
+					}
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -78,20 +77,20 @@ public class ChoixDuMatch extends JFrame {
 		demarrerMatch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(VariableStatique.getIdGardien()==0) {
-					pasDeGardien.setText("veuillez sélectionner un gardien");
+					pasDeGardien.setText("Veuillez sélectionner un gardien");
 				}
 				if(VariableStatique.getIdEquipeAdvers()==0) {
-					pasDequipe.setText("veuillez sélectionner une equipe advers");
+					pasDequipe.setText("Veuillez sélectionner une equipe advers");
 				}
 				if(VariableStatique.getIdEquipeAdvers()!=0 && VariableStatique.getIdGardien()!=0) {
 					
 				
-				conAuxServ.ajouterRencontre(VariableStatique.getIdGardien(),VariableStatique.getIdRencontre());
+				Rencontre getIdRencontre = conAuxServ.ajouterRencontre(VariableStatique.getIdMonEquipe(),VariableStatique.getIdEquipeAdvers());
+				VariableStatique.setIdRencontre(getIdRencontre.getIdRencontre());
+				
 				conAuxServ.ajouterScoreDuMatch(VariableStatique.getIdGardien(),VariableStatique.getIdRencontre());
-				System.out.println("aaaaaaaaaaa je ne suis pass nul" );		
-				System.out.println("id gardien "+ VariableStatique.getIdGardien() + " id equipe " + VariableStatique.getIdEquipeAdvers());
 				dispose();
-				new ApplicationSaisieScore().setVisible(true);
+				new ApplicationSaisieScore().setVisible(true); 
 			}
 			}
 		});
@@ -112,9 +111,8 @@ public class ChoixDuMatch extends JFrame {
 	            public void valueChanged(ListSelectionEvent e) {
 	                if (e.getValueIsAdjusting()) {
 	                    Gardien pojo = (Gardien) ((JList) e.getSource()).getSelectedValue();
-	                    System.out.println("Selected id gardien:  " + pojo.getIdGardien());
 	                    VariableStatique.setIdGardien(pojo.getIdGardien());
-	                    System.out.println("Selected id gardien:  " +VariableStatique.getIdGardien());
+	                    pasDeGardien.setText("");
 	                }
 	            }
 	        });
@@ -135,8 +133,7 @@ public class ChoixDuMatch extends JFrame {
 	                if (e.getValueIsAdjusting()) {
 	                    Equipe pojo = (Equipe) ((JList) e.getSource()).getSelectedValue();
 	                    VariableStatique.setIdEquipeAdvers(pojo.getIdEquipe());
-	                    System.out.println("Selected id  equipe: " + pojo.getIdEquipe());
-	                    VariableStatique.setIdRencontre(pojo.getIdEquipe());
+	                    pasDequipe.setText("");
 	                }
 	            }
 	        });
@@ -147,8 +144,6 @@ public class ChoixDuMatch extends JFrame {
 		deconnexion.setHorizontalAlignment(SwingConstants.RIGHT);
 		deconnexion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("aaaaaaaaaaa je ne suis pass nul" );	
-
 				conAuxServ.deconnecte(VariableStatique.getIdUtilisteur());
 				dispose();
 				new Connexion().setVisible(true);
@@ -177,8 +172,6 @@ public class ChoixDuMatch extends JFrame {
 		
 		addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-            	System.out.println("aaaaaaaaaaa je ne suis pass nul" );	
-
 				conAuxServ.deconnecte(VariableStatique.getIdUtilisteur());
 				dispose();
             }
