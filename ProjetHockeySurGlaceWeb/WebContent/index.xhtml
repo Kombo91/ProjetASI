@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+<h:head></h:head>
+<body>
+	<h:form id="form">
+		<h:selectOneMenu
+			value="#{applicatioAnalyseDesDonnDesBean.currentType}"
+			valueChangeListener="#{applicatioAnalyseDesDonnDesBean.choisirEquipe}">
+			<f:selectItems value="#{applicatioAnalyseDesDonnDesBean.listEquipe}" />
+			<a4j:ajax event="valueChange" render="second" execute="@this" />
+		</h:selectOneMenu>
+		<a4j:outputPanel id="second" layout="block">
+
+			<h:selectOneMenu value="#{applicatioAnalyseDesDonnDesBean.currentType}"
+				rendered="#{not empty applicatioAnalyseDesDonnDesBean.currentType}"
+				valueChangeListener="#{applicatioAnalyseDesDonnDesBean.choisirGadien}">
+				<f:selectItems value="#{applicatioAnalyseDesDonnDesBean.lesGardien}" />
+				<a4j:ajax event="valueChange" render="pie" execute="@this" />
+			</h:selectOneMenu>
+
+		</a4j:outputPanel>
+
+	</h:form>
+	<h:form>
+	<rich:chart id="bar" title="GDP sector composition">
+            <rich:chartLegend sorting="ascending" />
+            <a4j:repeat value="#{applicatioAnalyseDesDonnDesBean.lesScoreDeMatch}" var="country">
+                <rich:chartSeries label="#{country.idGardien}" type="bar">
+                    <rich:chartPoint x="Agricultural" y="#{country.nombreDeButArrete}" />
+                    <rich:chartPoint x="Industrial" y="#{country.nombreDeButEncaisse}" />
+                </rich:chartSeries>
+            </a4j:repeat>
+        </rich:chart>
+	</h:form> <rich:chart id="pie" title="USA GDP" width="150px">
+            <rich:chartLegend sorting="ascending" />
+            <rich:chartSeries data="#{applicatioAnalyseDesDonnDesBean.pie}" type="pie" />
+        </rich:chart>
+	
+	
+	<h:form>
+	
+	
+	</h:form>
+	<h:form>
+		<h:commandButton style="height:30px" class="Ajouter"
+			value="Ajouter module"
+			action="#{applicatioAnalyseDesDonnDesBean.listeDesEquipes}" />
+	</h:form>
+
+
+
+</body>
+</html>

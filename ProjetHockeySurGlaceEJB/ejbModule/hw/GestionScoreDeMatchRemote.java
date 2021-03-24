@@ -8,5 +8,6 @@ import javax.ejb.Remote;
 public interface GestionScoreDeMatchRemote {
 	public ScoreDeMatch ajouterScoreDeMatch(ScoreDeMatch sdm);
 	public ScoreDeMatch modifierScoreDeMatch(ScoreDeMatch sdm);
+	public ScoreDeMatch lesScoreDeMatch(int idRencontre);
 	
 }

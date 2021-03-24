@@ -34,7 +34,7 @@ public class GestionEquipe implements GestionEquipeRemote {
 	}
 
 	@Override
-	public Collection<Equipe> listerEquipe(int idMonEquipe) {
+	public Collection<Equipe> listerEquipeAdvers(int idMonEquipe) {
 		return em.createQuery(
 				"SELECT eq FROM Equipe eq WHERE eq.idEquipe NOT IN (SELECT ren.idEquipeAdvers FROM Rencontre ren WHERE ren.idMonEquipe ="
 						+ idMonEquipe + ") and eq.idEquipe !=" + idMonEquipe)
@@ -43,5 +43,12 @@ public class GestionEquipe implements GestionEquipeRemote {
 		// !="+idMonEquipe).getResultList();
 
 	}
+
+	@Override
+	public Collection<Equipe> listerEquipe() {
+		// TODO Auto-generated method stub
+		return em.createQuery("SELECT eq FROM Equipe eq").getResultList();
+	}
+	
 
 }

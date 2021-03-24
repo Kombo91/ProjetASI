@@ -129,6 +129,8 @@ public class ScoreDeMatch implements Serializable{
 	private int terrain6CageHpasBut;
 	private int terrain6CageIBut;
 	private int terrain6CageIpasBut;
+	private int nombreDeButArrete;	
+	private int nombreDeButEncaisse;
 	private String zoneDeTire;
 	
 	public ScoreDeMatch() {}
@@ -144,6 +146,7 @@ public class ScoreDeMatch implements Serializable{
 		this.idRencontre = idRencontre;
 		this.zoneDeTire = zoneDeTire;
 	}
+	
 	public int getIdScoreDeMatch() {
 		return idScoreDeMatch;
 	}
@@ -815,6 +818,18 @@ public class ScoreDeMatch implements Serializable{
 	}
 	public void setZoneDeTire(String zoneDeTire) {
 		this.zoneDeTire = zoneDeTire;
+	}
+	public int getNombreDeButArrete() {
+		return nombreDeButArrete;
+	}
+	public void setNombreDeButArrete(int nombreDeButArrete) {
+		this.nombreDeButArrete = nombreDeButArrete;
+	}
+	public int getNombreDeButEncaisse() {
+		return nombreDeButEncaisse;
+	}
+	public void setNombreDeButEncaisse(int nombreDeButEncaisse) {
+		this.nombreDeButEncaisse = nombreDeButEncaisse;
 	}
 	
 	

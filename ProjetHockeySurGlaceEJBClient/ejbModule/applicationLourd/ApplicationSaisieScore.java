@@ -419,9 +419,6 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 
 		//// terain 1
 		if (e.getSource() == terrain1) {
-			for(Gardien gd : VariableStatique.getListGardienEntrant()) {
-				System.out.println("test test " + gd.getNom());
-			}
 			zoneterrain = "terrain1";
 			remettreAZeroLesCouleursTerrain(zoneterrain);
 		}

@@ -7,6 +7,7 @@ import javax.ejb.Remote;
 @Remote
 public interface GestionEquipeRemote {
 	 public Equipe ajouterEquipe(Equipe eq);
-	 public Collection<Equipe> listerEquipe(int idMonEquipe);
+	 public Collection<Equipe> listerEquipeAdvers(int idMonEquipe);
+	 public Collection<Equipe> listerEquipe();
 	 
 }

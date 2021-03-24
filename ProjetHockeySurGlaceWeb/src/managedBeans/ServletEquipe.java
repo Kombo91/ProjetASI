@@ -76,7 +76,7 @@ public class ServletEquipe extends HttpServlet {
 		try {
 			ObjectInputStream entree = new ObjectInputStream(request.getInputStream());
 			int id = (int) entree.readObject();
-			List<Equipe> equipes = (List<Equipe>) gestionEquipe.listerEquipe(id);
+			List<Equipe> equipes = (List<Equipe>) gestionEquipe.listerEquipeAdvers(id);
 			ObjectOutputStream sortie = new ObjectOutputStream(response.getOutputStream());
 			sortie.writeObject(equipes);
 
