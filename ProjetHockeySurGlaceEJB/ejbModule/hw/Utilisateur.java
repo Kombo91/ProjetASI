@@ -9,18 +9,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 
 /**
  * @author KP
  *
  */
 @Entity
-@NamedQueries ({ 
-	@NamedQuery(name="findAlluser", query="SELECT m FROM Utilisateur m ORDER BY m.pseudo")
-    })
+
 public class Utilisateur implements Serializable  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2880116244664490551L;
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO) 
 	private int idUtilisateur;

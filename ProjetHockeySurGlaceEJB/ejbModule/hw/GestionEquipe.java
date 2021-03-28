@@ -1,8 +1,5 @@
 package hw;
 
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import java.util.Collection;
 
 import javax.ejb.LocalBean;

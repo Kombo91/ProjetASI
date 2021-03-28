@@ -15,12 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hw.GestionScoreDeMatchRemote;
 import hw.Rencontre;
-import hw.GestionConnexionRemote;
 import hw.GestionRencontreRemote;
-import hw.ScoreDeMatch;
-import hw.Utilisateur;
 /**
  * Servlet implementation class ServletAjouterRencontre
  */

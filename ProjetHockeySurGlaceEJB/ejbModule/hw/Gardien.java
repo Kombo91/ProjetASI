@@ -17,6 +17,10 @@ import javax.persistence.Id;
  */
 @Entity
 public class Gardien implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2015470704533427399L;
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO) 
 	private int idGardien;
@@ -29,6 +33,13 @@ public class Gardien implements Serializable{
 		super();
 		this.idGardien = idGardien;
 		this.nom = nom;
+	}
+	
+	public Gardien(int idGardien, String prenom, String nom) {
+		super();
+		this.idGardien = idGardien;
+		this.nom = nom;
+		this.prenom = prenom;
 	}
 	public int getIdGardien() {
 		return idGardien;
@@ -63,7 +74,7 @@ public class Gardien implements Serializable{
 	
 	@Override
     public String toString() {
-        return MessageFormat.format("{1}", getIdGardien(),getNom());
+        return MessageFormat.format("{1} {2}", getIdGardien(),getPrenom(),getNom());
     }
 	
 	 

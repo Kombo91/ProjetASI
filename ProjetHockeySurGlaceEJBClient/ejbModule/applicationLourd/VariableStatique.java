@@ -4,6 +4,7 @@
 package applicationLourd;
 
 import java.util.List;
+import java.util.Set;
 
 import hw.Gardien;
 
@@ -12,31 +13,33 @@ import hw.Gardien;
  *
  */
 public class VariableStatique {
-	private static boolean choixDuMatchInOpen = false;
-	private static boolean ApplicationSaisieScore = false;
-	private static boolean ajouterGardienALaListeSurTerrain = false;
+	private static boolean choixDuMatchIsOpen = false;
+	private static boolean ApplicationSaisieScoreIsOpen = false;
+	private static boolean choixDuGardienIsOpen = false;
+	private static boolean changerGardien = false;
 	private static int idUtilisteur;
 	private static int idGardien;
 	private static int idGardienEntrant;
 	private static int idRencontre;
 	private static int idMonEquipe;
+	private static int nomMonEquipe;
 	private static int idEquipeAdvers;
 	private static List<Gardien> listeGardientEntrant;
 	private static List<Gardien> listeTousLesGardiens;
-	private static List<Gardien> listedesGradiensSurTerrain;
+	private static Set<Gardien> listedesGradiensSurTerrain;
 	private static Gardien GradienEntrant;
 	
-	public static boolean isChoixDuMatchInOpen() {
-		return choixDuMatchInOpen;
+	public static boolean isChoixDuMatchIsOpen() {
+		return choixDuMatchIsOpen;
 	}
-	public static void setChoixDuMatchInOpen(boolean choixDuMatchInOpen) {
-		VariableStatique.choixDuMatchInOpen = choixDuMatchInOpen;
+	public static void setChoixDuMatchIsOpen(boolean choixDuMatchIsOpen) {
+		VariableStatique.choixDuMatchIsOpen = choixDuMatchIsOpen;
 	}
-	public static boolean isApplicationSaisieScore() {
-		return ApplicationSaisieScore;
+	public static boolean isApplicationSaisieScoreIsOpen() {
+		return ApplicationSaisieScoreIsOpen;
 	}
-	public static void setApplicationSaisieScore(boolean applicationSaisieScore) {
-		ApplicationSaisieScore = applicationSaisieScore;
+	public static void setApplicationSaisieScoreIsOpen(boolean applicationSaisieScoreIsOpen) {
+		ApplicationSaisieScoreIsOpen = applicationSaisieScoreIsOpen;
 	}
 	public static int getIdUtilisteur() {
 		return idUtilisteur;
@@ -80,10 +83,10 @@ public class VariableStatique {
 	public static void setListeTousLesGardiens(List<Gardien> listeTousLesGardiens) {
 		VariableStatique.listeTousLesGardiens = listeTousLesGardiens;
 	}
-	public static List<Gardien> getListedesGradiensSurTerrain() {
+	public static Set<Gardien> getListedesGradiensSurTerrain() {
 		return listedesGradiensSurTerrain;
 	}
-	public static void setListedesGradiensSurTerrain(List<Gardien> listedesGradiensSurTerrain) {
+	public static void setListedesGradiensSurTerrain(Set<Gardien> listedesGradiensSurTerrain) {
 		VariableStatique.listedesGradiensSurTerrain = listedesGradiensSurTerrain;
 	}
 	public static int getIdGardienEntrant() {
@@ -92,17 +95,29 @@ public class VariableStatique {
 	public static void setIdGardienEntrant(int idGardienEntrant) {
 		VariableStatique.idGardienEntrant = idGardienEntrant;
 	}
-	public static boolean isAjouterGardienALaListeSurTerrain() {
-		return ajouterGardienALaListeSurTerrain;
-	}
-	public static void setAjouterGardienALaListeSurTerrain(boolean ajouterGardienALaListeSurTerrain) {
-		VariableStatique.ajouterGardienALaListeSurTerrain = ajouterGardienALaListeSurTerrain;
-	}
 	public static Gardien getGradienEntrant() {
 		return GradienEntrant;
 	}
 	public static void setGradienEntrant(Gardien gradienEntrant) {
 		GradienEntrant = gradienEntrant;
+	}
+	public static int getNomMonEquipe() {
+		return nomMonEquipe;
+	}
+	public static void setNomMonEquipe(int nomMonEquipe) {
+		VariableStatique.nomMonEquipe = nomMonEquipe;
+	}
+	public static boolean isChoixDuGardienIsOpen() {
+		return choixDuGardienIsOpen;
+	}
+	public static void setChoixDuGardienIsOpen(boolean choixDuGardienIsOpen) {
+		VariableStatique.choixDuGardienIsOpen = choixDuGardienIsOpen;
+	}
+	public static boolean isChangerGardien() {
+		return changerGardien;
+	}
+	public static void setChangerGardien(boolean changerGardien) {
+		VariableStatique.changerGardien = changerGardien;
 	}
 	
 

@@ -16,6 +16,11 @@ import javax.persistence.Id;
  */
 @Entity
 public class Rencontre implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8121144136904801500L;
+
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO) 
 	private int idRencontre;

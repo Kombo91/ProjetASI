@@ -17,6 +17,10 @@ import javax.persistence.Id;
  */
 @Entity
 public class Equipe implements Serializable  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7213564531966500970L;
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO) 
 	private int idEquipe;

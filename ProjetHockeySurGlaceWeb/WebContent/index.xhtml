@@ -18,10 +18,11 @@
 		</h:selectOneMenu>
 		<a4j:outputPanel id="second" layout="block">
 
-			<h:selectOneMenu value="#{applicatioAnalyseDesDonnDesBean.currentType}"
-				rendered="#{not empty applicatioAnalyseDesDonnDesBean.currentType}"
+			<h:selectOneMenu
+				value="#{applicatioAnalyseDesDonnDesBean.currentType}"
+				
 				valueChangeListener="#{applicatioAnalyseDesDonnDesBean.choisirGadien}">
-				<f:selectItems value="#{applicatioAnalyseDesDonnDesBean.lesGardien}" />
+				<f:selectItems value="#{applicatioAnalyseDesDonnDesBean.listGradien}" />
 				<a4j:ajax event="valueChange" render="pie" execute="@this" />
 			</h:selectOneMenu>
 
@@ -49,9 +50,22 @@
 	
 	</h:form>
 	<h:form>
-		<h:commandButton style="height:30px" class="Ajouter"
-			value="Ajouter module"
-			action="#{applicatioAnalyseDesDonnDesBean.listeDesEquipes}" />
+	
+			<h:commandButton style="height:30px" class="Ajouter"
+			value="Lancers par zone de tir"
+			action="#{applicatioAnalyseDesDonnDesBean.lancersParZoneDeTir}" />
+			
+			<h:commandButton style="height:30px" class="Ajouter"
+			value="Lancers par zone d’arrêt"
+			action="#{applicatioAnalyseDesDonnDesBean.LancersParZoneDArret}" />
+			
+			<h:commandButton style="height:30px" class="Ajouter"
+			value="Arrêts par zone de tir"
+			action="#{applicatioAnalyseDesDonnDesBean.arretsParZoneDeTir}" />
+			
+			<h:commandButton style="height:30px" class="Ajouter"
+			value="Arrêts par zone d’arrêt"
+			action="#{applicatioAnalyseDesDonnDesBean.arretsParZoneDArret}" />			
 	</h:form>
 
 

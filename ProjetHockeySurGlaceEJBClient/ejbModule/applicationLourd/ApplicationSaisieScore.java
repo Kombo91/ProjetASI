@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import hw.Gardien;
+import hw.ScoreDeMatch;
 
 import java.awt.Color;
 import javax.swing.JButton;
@@ -24,6 +24,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JEditorPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
 
 /**
  * @author KP
@@ -31,6 +33,10 @@ import javax.swing.SwingConstants;
  */
 public class ApplicationSaisieScore extends JFrame implements MouseListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2121859626114537132L;
 	private JPanel contentPane;
 	private JPanel terrain1;
 	private JPanel terrain2;
@@ -60,6 +66,8 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	private int idGardien;
 	private int idRencontre;
 	private JTextField txtZoneDeGardien;
+	JLabel nbrButArrete;
+	JLabel nbrButEncaisse;
 
 	public int getIdGardien() {
 		return idGardien;
@@ -80,6 +88,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	ConnexionAuxServlet conAuxServ = new ConnexionAuxServlet();
 	private JLabel zoneDeTire;
 	private JLabel zoneDeCage;
+	private JTextField txtScooreDeMatch;
 
 	/**
 	 * Launch the application.
@@ -88,8 +97,9 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ApplicationSaisieScore frame = new ApplicationSaisieScore();
-					if (VariableStatique.isApplicationSaisieScore()) {
+					
+					if (VariableStatique.isApplicationSaisieScoreIsOpen()) {
+						ApplicationSaisieScore frame = new ApplicationSaisieScore();
 						frame.setVisible(true);
 					} else {
 						new PasDAcces().setVisible(true);
@@ -106,8 +116,10 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 	 */
 	public ApplicationSaisieScore() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 579, 413);
+		setResizable(false);
+		setBounds(100, 100, 646, 413);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -119,7 +131,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		terrain1.addMouseListener(this);
 		JLabel texteterrain1 = new JLabel("1");
 		texteterrain1.setVerticalAlignment(SwingConstants.BOTTOM);
-		texteterrain1.setFont(new Font("Verdana", 1, 20));
+		texteterrain1.setFont(new Font("Times New Roman", 1, 20));
 		terrain1.add(texteterrain1);
 		contentPane.add(terrain1);
 
@@ -128,7 +140,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		terrain2.setBounds(102, 45, 60, 60);
 		terrain2.addMouseListener(this);
 		JLabel texteterrain2 = new JLabel("2");
-		texteterrain2.setFont(new Font("Verdana", 1, 20));
+		texteterrain2.setFont(new Font("Times New Roman", 1, 20));
 		terrain2.add(texteterrain2);
 		contentPane.add(terrain2);
 
@@ -137,7 +149,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		terrain3.setBounds(32, 116, 60, 60);
 		terrain3.addMouseListener(this);
 		JLabel texteterrain3 = new JLabel("3");
-		texteterrain3.setFont(new Font("Verdana", 1, 20));
+		texteterrain3.setFont(new Font("Times New Roman", 1, 20));
 		terrain3.add(texteterrain3);
 		contentPane.add(terrain3);
 
@@ -146,7 +158,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		terrain4.setBounds(102, 116, 60, 60);
 		terrain4.addMouseListener(this);
 		JLabel texteterrain4 = new JLabel("4");
-		texteterrain4.setFont(new Font("Verdana", 1, 20));
+		texteterrain4.setFont(new Font("Times New Roman", 1, 20));
 		terrain4.add(texteterrain4);
 		contentPane.add(terrain4);
 
@@ -155,7 +167,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		terrain5.setBounds(32, 187, 60, 60);
 		terrain5.addMouseListener(this);
 		JLabel texteterrain5 = new JLabel("5");
-		texteterrain5.setFont(new Font("Verdana", 1, 20));
+		texteterrain5.setFont(new Font("Times New Roman", 1, 20));
 		terrain5.add(texteterrain5);
 		contentPane.add(terrain5);
 
@@ -164,7 +176,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		terrain6.setBounds(102, 187, 60, 60);
 		terrain6.addMouseListener(this);
 		JLabel texteterrain6 = new JLabel("6");
-		texteterrain6.setFont(new Font("Verdana", 1, 20));
+		texteterrain6.setFont(new Font("Times New Roman", 1, 20));
 		terrain6.add(texteterrain6);
 		contentPane.add(terrain6);
 
@@ -175,7 +187,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		cageA.setBounds(220, 45, 60, 60);
 		cageA.addMouseListener(this);
 		JLabel texteCageA = new JLabel("A");
-		texteCageA.setFont(new Font("Verdana", 1, 20));
+		texteCageA.setFont(new Font("Times New Roman", 1, 20));
 		cageA.add(texteCageA);
 		contentPane.add(cageA);
 
@@ -184,7 +196,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		cageB.setBounds(290, 45, 60, 60);
 		cageB.addMouseListener(this);
 		JLabel texteCageB = new JLabel("B");
-		texteCageB.setFont(new Font("Verdana", 1, 20));
+		texteCageB.setFont(new Font("Times New Roman", 1, 20));
 		cageB.add(texteCageB);
 		contentPane.add(cageB);
 
@@ -193,7 +205,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		cageC.setBounds(360, 45, 60, 60);
 		cageC.addMouseListener(this);
 		JLabel texteCageC = new JLabel("C");
-		texteCageC.setFont(new Font("Verdana", 1, 20));
+		texteCageC.setFont(new Font("Times New Roman", 1, 20));
 		cageC.add(texteCageC);
 		contentPane.add(cageC);
 
@@ -202,7 +214,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		cageD.setBounds(220, 116, 60, 60);
 		cageD.addMouseListener(this);
 		JLabel texteCageD = new JLabel("D");
-		texteCageD.setFont(new Font("Verdana", 1, 20));
+		texteCageD.setFont(new Font("Times New Roman", 1, 20));
 		cageD.add(texteCageD);
 		contentPane.add(cageD);
 
@@ -211,7 +223,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		cageE.setBounds(290, 116, 60, 60);
 		cageE.addMouseListener(this);
 		JLabel texteCageE = new JLabel("E");
-		texteCageE.setFont(new Font("Verdana", 1, 20));
+		texteCageE.setFont(new Font("Times New Roman", 1, 20));
 		cageE.add(texteCageE);
 		contentPane.add(cageE);
 
@@ -220,7 +232,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		cageF.setBounds(360, 116, 60, 60);
 		cageF.addMouseListener(this);
 		JLabel texteCageF = new JLabel("F");
-		texteCageF.setFont(new Font("Verdana", 1, 20));
+		texteCageF.setFont(new Font("Times New Roman", 1, 20));
 		cageF.add(texteCageF);
 		contentPane.add(cageF);
 
@@ -229,7 +241,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		cageG.setBounds(220, 187, 60, 60);
 		cageG.addMouseListener(this);
 		JLabel texteCageG = new JLabel("G");
-		texteCageG.setFont(new Font("Verdana", 1, 20));
+		texteCageG.setFont(new Font("Times New Roman", 1, 20));
 		cageG.add(texteCageG);
 		contentPane.add(cageG);
 
@@ -238,7 +250,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		cageH.setBounds(290, 187, 60, 60);
 		cageH.addMouseListener(this);
 		JLabel textecageH = new JLabel("H");
-		textecageH.setFont(new Font("Verdana", 1, 20));
+		textecageH.setFont(new Font("Times New Roman", 1, 20));
 		cageH.add(textecageH);
 		contentPane.add(cageH);
 
@@ -247,7 +259,7 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		cageI.setBounds(360, 187, 60, 60);
 		cageI.addMouseListener(this);
 		JLabel texteCageI = new JLabel("I");
-		texteCageI.setFont(new Font("Verdana", 1, 20));
+		texteCageI.setFont(new Font("Times New Roman", 1, 20));
 		cageI.add(texteCageI);
 		contentPane.add(cageI);
 
@@ -256,74 +268,69 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		But.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (zoneterrain == "") {
-					System.out.println("Sélectionnez une zone terrain");
 					zoneDeTire.setText("Veuillez sélectionner une zone terrain");
-
 				}
 				if (zoneCage == "") {
-					System.out.println("Sélectionnez une zone cage");
 					zoneDeCage.setText("Veuillez sélectionner une zone cage");
-
 				}
 
 				if (zoneterrain != "" && zoneCage != "") {
-
 					tire = zoneterrain + zoneCage + "But";
 					zoneCage = "";
 					zoneterrain = "";
 					changeCouleurDesCases();
-					conAuxServ.modifierScooreDeMatch(VariableStatique.getIdGardien(), VariableStatique.getIdRencontre(),
-							tire);
-
+					ScoreDeMatch sdm = conAuxServ.modifierScooreDeMatch(VariableStatique.getIdGardien(),
+							VariableStatique.getIdRencontre(), tire);
+					nbrButEncaisse.setText(String.valueOf(sdm.getNombreDeButEncaisse()));
 				}
-
 			}
 		});
 		But.setBackground(Color.RED);
-		But.setBounds(466, 85, 80, 40);
+		But.setBounds(465, 223, 130, 40);
 		contentPane.add(But);
 
+		
+		
 		PasBut = new JButton("Pas but");
 		PasBut.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		PasBut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (zoneterrain == "") {
 					zoneDeTire.setText("Veuillez sélectionner une zone terrain");
-
 				}
 				if (zoneCage == "") {
 					zoneDeCage.setText("Veuillez sélectionner une zone cage");
-
 				}
-
 				if (zoneterrain != "" && zoneCage != "") {
 					tire = zoneterrain + zoneCage + "pasBut";
 					zoneCage = "";
 					zoneterrain = "";
 					changeCouleurDesCases();
-					conAuxServ.modifierScooreDeMatch(VariableStatique.getIdGardien(), VariableStatique.getIdRencontre(),
-							tire);
-
+					ScoreDeMatch sdm = conAuxServ.modifierScooreDeMatch(VariableStatique.getIdGardien(),
+							VariableStatique.getIdRencontre(), tire);
+					nbrButArrete.setText(String.valueOf(sdm.getNombreDeButArrete()));
 				}
-
 			}
 		});
 		PasBut.setBackground(Color.GREEN);
-		PasBut.setBounds(466, 163, 80, 40);
+		PasBut.setBounds(465, 172, 130, 40);
 		contentPane.add(PasBut);
 
 		finDeMatch = new JButton("Fin de match");
-		finDeMatch.setBackground(Color.BLUE);
+		finDeMatch.setBackground(Color.CYAN);
 		finDeMatch.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		finDeMatch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				dispose();
+				new ChoixDuMatch().setVisible(true);
 			}
 		});
-		finDeMatch.setBounds(431, 312, 115, 40);
+		finDeMatch.setBounds(480, 312, 115, 40);
 		contentPane.add(finDeMatch);
 
 		JEditorPane editorPane = new JEditorPane();
+		editorPane.setEnabled(false);
+		editorPane.setEditable(false);
 		editorPane.setBackground(Color.YELLOW);
 		editorPane.setBounds(20, 32, 155, 231);
 		contentPane.add(editorPane);
@@ -339,7 +346,9 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		txtZoneDeTire.setColumns(10);
 
 		JEditorPane editorPane_1 = new JEditorPane();
-		editorPane_1.setBackground(Color.YELLOW);
+		editorPane_1.setEnabled(false);
+		editorPane_1.setEditable(false);
+		editorPane_1.setBackground(Color.LIGHT_GRAY);
 		editorPane_1.setBounds(209, 32, 224, 231);
 		contentPane.add(editorPane_1);
 
@@ -351,8 +360,8 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 			}
 		});
 		changementGardien.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		changementGardien.setBackground(Color.BLUE);
-		changementGardien.setBounds(209, 312, 180, 40);
+		changementGardien.setBackground(Color.CYAN);
+		changementGardien.setBounds(220, 312, 180, 40);
 		contentPane.add(changementGardien);
 
 		JButton deconnexion = new JButton("D\u00E9connexion");
@@ -364,8 +373,8 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 			}
 		});
 		deconnexion.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		deconnexion.setBackground(Color.BLUE);
-		deconnexion.setBounds(20, 312, 115, 40);
+		deconnexion.setBackground(Color.CYAN);
+		deconnexion.setBounds(47, 312, 115, 40);
 		contentPane.add(deconnexion);
 
 		txtZoneDeGardien = new JTextField();
@@ -374,19 +383,65 @@ public class ApplicationSaisieScore extends JFrame implements MouseListener {
 		txtZoneDeGardien.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		txtZoneDeGardien.setEditable(false);
 		txtZoneDeGardien.setColumns(10);
-		txtZoneDeGardien.setBackground(Color.YELLOW);
+		txtZoneDeGardien.setBackground(Color.LIGHT_GRAY);
 		txtZoneDeGardien.setBounds(264, 11, 106, 20);
 		contentPane.add(txtZoneDeGardien);
 
 		zoneDeTire = new JLabel("");
 		zoneDeTire.setForeground(Color.RED);
-		zoneDeTire.setBounds(20, 275, 223, 14);
+		zoneDeTire.setBounds(10, 275, 224, 14);
 		contentPane.add(zoneDeTire);
 
 		zoneDeCage = new JLabel("");
 		zoneDeCage.setForeground(Color.RED);
-		zoneDeCage.setBounds(253, 274, 180, 14);
+		zoneDeCage.setBounds(244, 274, 189, 14);
 		contentPane.add(zoneDeCage);
+
+		JLabel lblNewLabel_1 = new JLabel("But arret\u00E9");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setBounds(465, 116, 60, 14);
+		contentPane.add(lblNewLabel_1);
+
+		JLabel lblNewLabel_2 = new JLabel("But encaiss\u00E9");
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setBounds(530, 116, 80, 14);
+		contentPane.add(lblNewLabel_2);
+
+		JPanel butArrete = new JPanel();
+		butArrete.setBackground(Color.GREEN);
+		butArrete.setBounds(465, 45, 60, 60);
+		contentPane.add(butArrete);
+
+		nbrButArrete = new JLabel("0");
+		nbrButArrete.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		butArrete.add(nbrButArrete);
+
+		JPanel butEncaisse = new JPanel();
+		butEncaisse.setBackground(Color.RED);
+		butEncaisse.setBounds(535, 45, 60, 60);
+		contentPane.add(butEncaisse);
+
+		nbrButEncaisse = new JLabel("0");
+		nbrButEncaisse.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		butEncaisse.add(nbrButEncaisse);
+		
+		txtScooreDeMatch = new JTextField();
+		txtScooreDeMatch.setText("Scoore de match");
+		txtScooreDeMatch.setHorizontalAlignment(SwingConstants.CENTER);
+		txtScooreDeMatch.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		txtScooreDeMatch.setEditable(false);
+		txtScooreDeMatch.setColumns(10);
+		txtScooreDeMatch.setBackground(Color.GRAY);
+		txtScooreDeMatch.setBounds(478, 11, 106, 20);
+		contentPane.add(txtScooreDeMatch);
+		
+		JEditorPane editorPane_1_1 = new JEditorPane();
+		editorPane_1_1.setEnabled(false);
+		editorPane_1_1.setEditable(false);
+		editorPane_1_1.setBackground(Color.GRAY);
+		editorPane_1_1.setBounds(455, 32, 150, 109);
+		contentPane.add(editorPane_1_1);
+
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				conAuxServ.deconnecte(VariableStatique.getIdUtilisteur());

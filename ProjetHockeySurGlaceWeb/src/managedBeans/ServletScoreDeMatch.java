@@ -74,9 +74,9 @@ public class ServletScoreDeMatch extends HttpServlet {
 		try {
 			ObjectInputStream entree = new ObjectInputStream(request.getInputStream());
 			ScoreDeMatch sdm = (ScoreDeMatch) entree.readObject();
-			gestionScoreDeMatchRemote.modifierScoreDeMatch(sdm);
+			ScoreDeMatch sdmAJour = gestionScoreDeMatchRemote.modifierScoreDeMatch(sdm);
 			ObjectOutputStream sortie = new ObjectOutputStream(response.getOutputStream());
-			sortie.writeObject(sdm);
+			sortie.writeObject(sdmAJour);
 
 		} catch (Exception e) {
 			// TODO: handle exception

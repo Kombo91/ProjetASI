@@ -24,6 +24,10 @@ import java.awt.Color;
  */
 public class Connexion extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField pseudo;
 	private JTextField pwd;
@@ -52,6 +56,8 @@ public class Connexion extends JFrame {
 	 */
 	public Connexion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+
 		setBounds(100, 100, 450, 271);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -77,14 +83,11 @@ public class Connexion extends JFrame {
 		connexionButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Utilisateur util = conAuxServ.connexion(pseudo.getText(),pwd.getText());
-				
-				
-				 
 
 				if (util.getPseudo() != null) {
 					if (!util.isEst_connecte()) {
 						conAuxServ.connecte(util.getIdUtilisateur());
-						VariableStatique.setChoixDuMatchInOpen(true);
+						//VariableStatique.setChoixDuMatchIsOpen(true);
 						VariableStatique.setIdUtilisteur(util.getIdUtilisateur());
 						VariableStatique.setIdMonEquipe(util.getIdEquipe());
 						dispose();
@@ -108,6 +111,7 @@ public class Connexion extends JFrame {
 		contentPane.add(pseudo);
 		pseudo.setColumns(10);
 		
+				
 		pwd = new JTextField();
 		pwd.setBounds(162, 103, 200, 30);
 		contentPane.add(pwd);

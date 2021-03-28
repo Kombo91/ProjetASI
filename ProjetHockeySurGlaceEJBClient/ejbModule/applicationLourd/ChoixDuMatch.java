@@ -3,11 +3,11 @@
  */
 package applicationLourd;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -22,7 +22,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
@@ -35,6 +37,10 @@ import javax.swing.JLabel;
  */
 public class ChoixDuMatch extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6640300638482710941L;
 	private JPanel contentPane;
 	JLabel pasDeGardien;
 	JLabel pasDequipe;
@@ -47,8 +53,9 @@ public class ChoixDuMatch extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ChoixDuMatch frame = new ChoixDuMatch();
-					if (VariableStatique.isChoixDuMatchInOpen()) {
+					
+					if (VariableStatique.isChoixDuMatchIsOpen()) {
+						ChoixDuMatch frame = new ChoixDuMatch();
 						frame.setVisible(true);
 					} else {
 						new PasDAcces().setVisible(true);
@@ -66,6 +73,8 @@ public class ChoixDuMatch extends JFrame {
 	 */
 	public ChoixDuMatch() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+
 		setBounds(100, 100, 484, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -74,8 +83,8 @@ public class ChoixDuMatch extends JFrame {
 
 		List<Gardien> listGardien = conAuxServ.recupererToutLesGardiens(VariableStatique.getIdMonEquipe());
 		VariableStatique.setListeTousLesGardiens(listGardien);
-		List<Gardien> cloned_list = new ArrayList<Gardien>();
-		List<Gardien> cloned_list2 = new ArrayList<Gardien>();
+		List<Gardien> listGardientEntrant = new ArrayList<Gardien>();
+		Set<Gardien> listGradiensSurTerrain = new HashSet<Gardien>();
 
 		JButton demarrerMatch = new JButton("Demarrer Match");
 		demarrerMatch.setHorizontalAlignment(SwingConstants.LEADING);
@@ -97,13 +106,13 @@ public class ChoixDuMatch extends JFrame {
 
 					for (Gardien gd : listGardien) {
 						if (VariableStatique.getIdGardien() != gd.getIdGardien()) {
-							cloned_list.add(gd);
+							listGardientEntrant.add(gd);
 						} else {
-							cloned_list2.add(gd);
+							listGradiensSurTerrain.add(gd);
 						}
 					}
-					VariableStatique.setListedesGradiensSurTerrain(cloned_list2);
-					VariableStatique.setListeGardientEntrant(cloned_list);
+					VariableStatique.setListedesGradiensSurTerrain(listGradiensSurTerrain);
+					VariableStatique.setListeGardientEntrant(listGardientEntrant);
 
 					dispose();
 					new ApplicationSaisieScore().setVisible(true);
@@ -113,12 +122,15 @@ public class ChoixDuMatch extends JFrame {
 		demarrerMatch.setBounds(323, 227, 127, 23);
 		contentPane.add(demarrerMatch);
 		DefaultListModel<Gardien> modelListeGardien = new DefaultListModel<Gardien>();
+		
+
 		JList listeGardienJlist = new JList(modelListeGardien);
-		listeGardienJlist.setBounds(20, 50, 200, 144);
-		contentPane.add(listeGardienJlist);
+		JScrollPane scrollPaneGardien = new JScrollPane(listeGardienJlist);
+		scrollPaneGardien.setBounds(20, 50, 200, 144);
+		contentPane.add(scrollPaneGardien);
 
 		for (Gardien gard : listGardien) {
-			modelListeGardien.addElement(new Gardien(gard.getIdGardien(), gard.getNom()));
+			modelListeGardien.addElement(new Gardien(gard.getIdGardien(),gard.getPrenom(), gard.getNom()));
 		}
 		listeGardienJlist.addListSelectionListener(new ListSelectionListener() {
 			@Override
@@ -133,9 +145,10 @@ public class ChoixDuMatch extends JFrame {
 
 		DefaultListModel<Equipe> modelListeEquipe = new DefaultListModel<Equipe>();
 		JList listeEquipeJlist = new JList(modelListeEquipe);
-		listeEquipeJlist.setBackground(Color.WHITE);
-		listeEquipeJlist.setBounds(250, 50, 200, 144);
-		contentPane.add(listeEquipeJlist);
+		JScrollPane scrollPaneEquipe = new JScrollPane(listeEquipeJlist);
+		scrollPaneEquipe.setBackground(Color.WHITE);
+		scrollPaneEquipe.setBounds(250, 50, 200, 144);
+		contentPane.add(scrollPaneEquipe);
 		List<Equipe> listEquipe = conAuxServ.recupererToutesLesEquipes(VariableStatique.getIdMonEquipe());
 
 		for (Equipe eq : listEquipe) {

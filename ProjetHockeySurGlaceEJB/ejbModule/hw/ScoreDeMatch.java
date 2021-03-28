@@ -5,6 +5,7 @@ package hw;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,10 @@ import javax.persistence.Id;
  */
 @Entity
 public class ScoreDeMatch implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5350461008157593566L;
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO) 
 	private int idScoreDeMatch;
@@ -131,6 +136,18 @@ public class ScoreDeMatch implements Serializable{
 	private int terrain6CageIpasBut;
 	private int nombreDeButArrete;	
 	private int nombreDeButEncaisse;
+	
+
+	private int nombreTirZone1;
+	private int nombreTirZone2;
+	private int nombreTirZone3;
+	private int nombreTirZone4;
+	private int nombreTirZone5;
+	private int nombreTirZone6;
+	
+
+	private int nombreTirCageA;
+	
 	private String zoneDeTire;
 	
 	public ScoreDeMatch() {}

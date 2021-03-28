@@ -144,7 +144,7 @@ public class ConnexionAuxServlet {
 		}
 	}
 	
-	public void modifierScooreDeMatch(int idGardien,int idRencontre, String tire){
+	public ScoreDeMatch modifierScooreDeMatch(int idGardien,int idRencontre, String tire){
 		try
 		{
 			URL url=new URL("http://localhost:8080/ProjetHockeySurGlaceWeb/ScoreDeMatch");
@@ -154,11 +154,13 @@ public class ConnexionAuxServlet {
 			ScoreDeMatch sdm = new ScoreDeMatch (idGardien,idRencontre,tire);
 			fluxsortie.writeObject(sdm);
 			ObjectInputStream fluxentree = new ObjectInputStream(connexion.getInputStream());
-			ScoreDeMatch produits = (ScoreDeMatch) fluxentree.readObject();
+			ScoreDeMatch sdmAjour = (ScoreDeMatch) fluxentree.readObject();
+			return sdmAjour;
 		}
 		catch (Exception e)
 		{
 			System.out.println("erreur "+e);
+			return null;
 		}
 	}
 
