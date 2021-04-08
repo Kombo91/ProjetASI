@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:rich="http://richfaces.org/rich"
@@ -7,67 +8,200 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 
-<h:head></h:head>
+<h:head>
+	<style type="text/css">
+.chart-container {
+	width: 45%;
+	display: inline-block;
+	display: inline-block;
+	display: inline-block;
+}
+;
+</style>
+</h:head>
 <body>
+	<!--		le menu		 -->
+
+
 	<h:form id="form">
+
+		<!-- -->
+
+		<h:outputLabel> Choisir équipe </h:outputLabel>
 		<h:selectOneMenu
 			value="#{applicatioAnalyseDesDonnDesBean.currentType}"
 			valueChangeListener="#{applicatioAnalyseDesDonnDesBean.choisirEquipe}">
 			<f:selectItems value="#{applicatioAnalyseDesDonnDesBean.listEquipe}" />
-			<a4j:ajax event="valueChange" render="second" execute="@this" />
+			<a4j:ajax event="valueChange"
+				render="choisirGardien,lesGraphs,saisonOuMatchParticulie,pasDeGardien,groups,pie,pie2,pie3,pie4,bar"
+				execute="@this" />
 		</h:selectOneMenu>
-		<a4j:outputPanel id="second" layout="block">
 
+		<!-- -->
+
+		<a4j:outputPanel id="choisirGardien" layout="inline"
+			style="margin-left: 30px">
 			<h:selectOneMenu
 				value="#{applicatioAnalyseDesDonnDesBean.currentType}"
-				
+				rendered="#{not empty applicatioAnalyseDesDonnDesBean.currentType}"
 				valueChangeListener="#{applicatioAnalyseDesDonnDesBean.choisirGadien}">
-				<f:selectItems value="#{applicatioAnalyseDesDonnDesBean.listGradien}" />
-				<a4j:ajax event="valueChange" render="pie" execute="@this" />
+				<h:outputLabel> Choisir gardien </h:outputLabel>
+				<f:selectItems
+					value="#{applicatioAnalyseDesDonnDesBean.listGradien}" />
+				<a4j:ajax event="valueChange" execute="@this"
+					render="saisonOuMatchParticulie,lesGraphs,pie,pie2,pie3,pie4,bar,groups" />
 			</h:selectOneMenu>
-
 		</a4j:outputPanel>
 
-	</h:form>
-	<h:form>
-	<rich:chart id="bar" title="GDP sector composition">
-            <rich:chartLegend sorting="ascending" />
-            <a4j:repeat value="#{applicatioAnalyseDesDonnDesBean.lesScoreDeMatch}" var="country">
-                <rich:chartSeries label="#{country.idGardien}" type="bar">
-                    <rich:chartPoint x="Agricultural" y="#{country.nombreDeButArrete}" />
-                    <rich:chartPoint x="Industrial" y="#{country.nombreDeButEncaisse}" />
-                </rich:chartSeries>
-            </a4j:repeat>
-        </rich:chart>
-	</h:form> <rich:chart id="pie" title="USA GDP" width="150px">
-            <rich:chartLegend sorting="ascending" />
-            <rich:chartSeries data="#{applicatioAnalyseDesDonnDesBean.pie}" type="pie" />
-        </rich:chart>
-	
-	
-	<h:form>
-	
-	
-	</h:form>
-	<h:form>
-	
-			<h:commandButton style="height:30px" class="Ajouter"
-			value="Lancers par zone de tir"
-			action="#{applicatioAnalyseDesDonnDesBean.lancersParZoneDeTir}" />
-			
-			<h:commandButton style="height:30px" class="Ajouter"
-			value="Lancers par zone d’arrêt"
-			action="#{applicatioAnalyseDesDonnDesBean.LancersParZoneDArret}" />
-			
-			<h:commandButton style="height:30px" class="Ajouter"
-			value="Arrêts par zone de tir"
-			action="#{applicatioAnalyseDesDonnDesBean.arretsParZoneDeTir}" />
-			
-			<h:commandButton style="height:30px" class="Ajouter"
-			value="Arrêts par zone d’arrêt"
-			action="#{applicatioAnalyseDesDonnDesBean.arretsParZoneDArret}" />			
+		<!-- -->
+
+		<a4j:outputPanel id="saisonOuMatchParticulie" layout="inline"
+			style="margin-left: 30px">
+			<h:selectOneMenu
+				value="#{applicatioAnalyseDesDonnDesBean.currentType}"
+				rendered="#{not empty applicatioAnalyseDesDonnDesBean.currentType}"
+				valueChangeListener="#{applicatioAnalyseDesDonnDesBean.statistiqueSaisonOuMatchParticulie}">
+				<h:outputLabel> Choix statistique </h:outputLabel>
+				<f:selectItems
+					value="#{applicatioAnalyseDesDonnDesBean.choixStatistique}" />
+				<a4j:ajax event="valueChange" render="lesGraphs,pie,pie2,pie3,pie4,bar,groups"
+					execute="@this" />
+			</h:selectOneMenu>
+		</a4j:outputPanel>
+
+		<!-- -->
+
+		<h:panelGroup id="groups">
+			<h:panelGroup
+				rendered="#{applicatioAnalyseDesDonnDesBean.plusDeChoix == 'matchParticulie'}"
+				style="margin-left: 30px">
+				<h:selectOneMenu
+					value="#{applicatioAnalyseDesDonnDesBean.currentType}"
+					valueChangeListener="#{applicatioAnalyseDesDonnDesBean.plusDeDetails}">
+					<h:outputLabel> Choisir un match particulier </h:outputLabel>
+					<f:selectItems
+						value="#{applicatioAnalyseDesDonnDesBean.listEquipeContre}" />
+					<a4j:ajax event="valueChange" render="lesGraphs,pie,pie2,pie3,pie4,bar"
+						execute="@this" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+		</h:panelGroup>
+
 	</h:form>
 
+
+	<!--		les graphs		 -->
+
+
+	<h:form>
+
+		<!-- -->
+
+		<h:panelGroup id="pasDeGardien">
+
+			<h:panelGroup
+				rendered="#{applicatioAnalyseDesDonnDesBean.pasDeGardien == 'pasDeGardien'}">
+				<h:outputLabel>il y pas des gardien
+				</h:outputLabel>
+			</h:panelGroup>
+
+		</h:panelGroup>
+
+		<!-- -->
+		<h:panelGroup id="lesGraphs">
+			<h:panelGroup
+				rendered="#{applicatioAnalyseDesDonnDesBean.afficherGraphs == 'afficherGraphs'}">
+				<rich:chart id="bar" title="GDP sector composition">
+					<rich:chartLegend sorting="ascending" />
+					<a4j:repeat value="#{applicatioAnalyseDesDonnDesBean.sdm}"
+						var="country">
+						<rich:chartSeries type="bar">
+							<rich:chartPoint x="nombreDeButArrete"
+								y="#{country.nombreDeButArrete}" />
+							<rich:chartPoint x="nombreDeButEncaisse"
+								y="#{country.nombreDeButEncaisse}" />
+						</rich:chartSeries>
+					</a4j:repeat>
+				</rich:chart>
+			</h:panelGroup>
+
+			<!-- -->
+
+			<h:panelGroup
+				rendered="#{applicatioAnalyseDesDonnDesBean.afficherGraphs == 'afficherGraphs'}">
+				<rich:chart style="width: 45% ; display: inline-block;" id="pie"
+					title="Lancers Par Zone D Arret">
+					<rich:chartLegend sorting="ascending" />
+					<rich:chartSeries
+						data="#{applicatioAnalyseDesDonnDesBean.pieLancersParZoneDArret}"
+						type="pie" />
+				</rich:chart>
+			</h:panelGroup>
+
+			<!-- -->
+
+			<h:panelGroup
+				rendered="#{applicatioAnalyseDesDonnDesBean.afficherGraphs == 'afficherGraphs'}">
+				<rich:chart style="width: 45% ; display: inline-block;" id="pie2"
+					title="Lancers Par Zone De Tir">
+					<rich:chartLegend sorting="ascending" />
+					<rich:chartSeries
+						data="#{applicatioAnalyseDesDonnDesBean.pieLancersParZoneDeTir}"
+						type="pie" />
+				</rich:chart>
+			</h:panelGroup>
+
+			<!-- -->
+
+			<h:panelGroup
+				rendered="#{applicatioAnalyseDesDonnDesBean.afficherGraphs == 'afficherGraphs'}">
+				
+						<rich:chart style="width: 45% ; display: inline-block;"
+							title="Arrets Par Zone D Arret">
+							<rich:chartLegend sorting="ascending" />
+							<rich:chartSeries
+								data="#{applicatioAnalyseDesDonnDesBean.pieArretsParZoneDArret}"
+								type="pie" />
+						</rich:chart>
+				
+			</h:panelGroup>
+
+			<!-- -->
+
+			<h:panelGroup
+				rendered="#{applicatioAnalyseDesDonnDesBean.afficherGraphs == 'afficherGraphs'}">
+				<rich:chart style="width: 45% ; display: inline-block;" title="Arrets Par Zone De Tir">
+					<rich:chartLegend sorting="ascending" />
+					<rich:chartSeries
+						data="#{applicatioAnalyseDesDonnDesBean.pieArretsParZoneDeTir}"
+						type="pie" />
+				</rich:chart>
+			</h:panelGroup>
+
+		</h:panelGroup>
+
+
+
+
+		<!-- -->
+
+
+
+		<!--  -->
+
+
+
+		<!--  -->
+
+
+
+
+		<!--  -->
+
+
+
+
+	</h:form>
 
 
 </body>

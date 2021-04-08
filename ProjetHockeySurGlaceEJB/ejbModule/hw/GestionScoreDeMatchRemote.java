@@ -13,7 +13,7 @@ public interface GestionScoreDeMatchRemote {
 	public ScoreDeMatch lesScoreDeMatch(int idRencontre);
 	public Collection<ScoreDeMatch> nbrTotalTirVersGardien(int idGadien);
 	public List<ScoreDeMatch> staticTouteLaSaison(int idGardien);
-	public List<ScoreDeMatch> staticDUnGardienParRaportAUnMatch(int idGardien,int idRencontre);
+	public List<ScoreDeMatch> staticDUnGardienParRaportAUnMatch(int idGardien, int idEquipeChoisi, int idEquipeChoisiplusDeDetails);
 
 	
 }

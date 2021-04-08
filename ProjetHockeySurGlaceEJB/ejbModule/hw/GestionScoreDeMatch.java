@@ -395,11 +395,12 @@ public class GestionScoreDeMatch implements GestionScoreDeMatchRemote {
 
 	}
 	@Override
-	public List<ScoreDeMatch> staticDUnGardienParRaportAUnMatch(int idGardien,int idRencontre) {
-		List<ScoreDeMatch> staticTouteLaSaison = em
-				.createQuery("SELECT sdm FROM ScoreDeMatch sdm WHERE sdm.idGardien= " + idGardien).getResultList();
-				
-		return staticTouteLaSaison;
+	public List<ScoreDeMatch> staticDUnGardienParRaportAUnMatch(int idGardien, int idEquipeChoisi, int idEquipeChoisiplusDeDetails) {
+		List<Rencontre> rencontre  = em.createQuery("SELECT re FROM Rencontre re WHERE re.idMonEquipe = "+idEquipeChoisi + "AND re.idEquipeAdvers = "+idEquipeChoisiplusDeDetails).getResultList();
+		System.out.println(" rencontre = "+rencontre.get(0).getIdRencontre());
+		List<ScoreDeMatch> staticDUnGardienParRaportAUnMatch = em .createQuery("SELECT sdm FROM ScoreDeMatch sdm WHERE sdm.idGardien= " + idGardien +" AND  sdm.idRencontre = "+rencontre.get(0).getIdRencontre()).getResultList();
+		System.out.println(" staticDUnGardienParRaportAUnMatch = "+staticDUnGardienParRaportAUnMatch.get(0).getIdScoreDeMatch());
+		return staticDUnGardienParRaportAUnMatch;
 
 	}
 

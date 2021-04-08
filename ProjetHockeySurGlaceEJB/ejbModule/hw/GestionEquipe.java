@@ -40,7 +40,14 @@ public class GestionEquipe implements GestionEquipeRemote {
 		// !="+idMonEquipe).getResultList();
 
 	}
+	@Override
+	public Collection<Equipe> listerEquipeContre(int idEquipeChoisi) {
+		return em.createQuery("SELECT eq FROM Equipe eq WHERE eq.idEquipe !=" + idEquipeChoisi).getResultList();
+		// return em.createQuery("SELECT eq FROM Equipe eq WHERE eq.idEquipe
+		// !="+idMonEquipe).getResultList();
 
+	}
+	
 	@Override
 	public Collection<Equipe> listerEquipe() {
 		// TODO Auto-generated method stub

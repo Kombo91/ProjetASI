@@ -136,17 +136,7 @@ public class ScoreDeMatch implements Serializable{
 	private int terrain6CageIpasBut;
 	private int nombreDeButArrete;	
 	private int nombreDeButEncaisse;
-	
 
-	private int nombreTirZone1;
-	private int nombreTirZone2;
-	private int nombreTirZone3;
-	private int nombreTirZone4;
-	private int nombreTirZone5;
-	private int nombreTirZone6;
-	
-
-	private int nombreTirCageA;
 	
 	private String zoneDeTire;
 	
@@ -155,6 +145,11 @@ public class ScoreDeMatch implements Serializable{
 		super();
 		this.idGardien = idGardien;
 		this.idRencontre = idRencontre;
+	}
+	public ScoreDeMatch(int idGardien ,int nombreDeButArrete, int nombreDeButEncaisse) {
+		super();
+		this.nombreDeButArrete = nombreDeButArrete;
+		this.nombreDeButEncaisse = nombreDeButEncaisse;
 	}
 	
 	public ScoreDeMatch(int idGardien, int idRencontre, String zoneDeTire) {
